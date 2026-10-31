@@ -58,7 +58,8 @@ const ICONS = {
   Clock,
   Users,
   Building2,
-  Calendar
+  Calendar,
+  MessageCircle
 };
 
 const Logo = () => (
@@ -606,10 +607,22 @@ export default function App() {
         <section id="about" className="about-section light-section">
           <div className="wrap">
             <div className="section-header-centered rv">
-              <span className="section-eyebrow">{t.tagline}</span>
+              <span className="section-eyebrow">{t.aBadge || t.tagline}</span>
               <h2 className="section-title">{t.aT}</h2>
               <p className="section-subtitle">{t.aP}</p>
             </div>
+
+            {/* Quick Highlights Row */}
+            {t.aboutHighlights && (
+              <div className="about-highlights-row rv">
+                {t.aboutHighlights.map((hl, i) => (
+                  <div key={i} className="about-hl-pill">
+                    <span className="hl-label">{hl.label}:</span>
+                    <strong className="hl-val">{hl.val}</strong>
+                  </div>
+                ))}
+              </div>
+            )}
 
             {/* Core Pillars */}
             <div className="about-pillars-grid">
@@ -617,8 +630,11 @@ export default function App() {
                 const iconNames = ['Monitor', 'Keyboard', 'GraduationCap', 'Users'];
                 return (
                   <div key={i} className="pillar-card rv" style={{ transitionDelay: `${i * 90}ms` }}>
-                    <div className="pillar-icon-box">
-                      <RenderIcon name={iconNames[i]} size={24} />
+                    <div className="pillar-card-top">
+                      <div className="pillar-icon-box">
+                        <RenderIcon name={iconNames[i]} size={24} />
+                      </div>
+                      {pillar.tag && <span className="pillar-tag">{pillar.tag}</span>}
                     </div>
                     <h3 className="pillar-title">{pillar.title}</h3>
                     <p className="pillar-desc">{pillar.desc}</p>
@@ -629,21 +645,29 @@ export default function App() {
 
             {/* Director Information Card */}
             <div className="leadership-highlight-card rv">
-              <div className="leadership-badge">
-                <Building2 size={20} />
-                <span>{t.tagline}</span>
+              <div className="leadership-card-header">
+                <div className="leadership-badge">
+                  <Building2 size={20} />
+                  <span>{t.tagline}</span>
+                </div>
+                <div className="leadership-verified-badge">
+                  <ShieldCheck size={16} />
+                  <span>Verified Institute Leadership</span>
+                </div>
               </div>
               <div className="leadership-content">
-                <div className="director-slot">
+                <div className="director-slot current">
+                  <div className="director-status-pill current">2021–Present</div>
                   <span className="director-role-label">{t.currentDirector}</span>
                   <h4 className="director-name-val">{t.directorName}</h4>
                   <p className="director-place">{t.loc}</p>
                 </div>
                 <div className="director-divider" />
-                <div className="director-slot">
+                <div className="director-slot founder">
+                  <div className="director-status-pill founder">2016–2020</div>
                   <span className="director-role-label">{t.founderDirector}</span>
                   <h4 className="director-name-val founder">{t.founderName}</h4>
-                  <p className="director-place">{t.establishedYear}</p>
+                  <p className="director-place">{t.establishedYear} · Pachore</p>
                 </div>
               </div>
             </div>
@@ -656,7 +680,7 @@ export default function App() {
         <section id="journey" className="journey-section dark-section">
           <div className="wrap">
             <div className="section-header rv">
-              <span className="section-eyebrow cyan">{t.tagline}</span>
+              <span className="section-eyebrow cyan">{t.jBadge || t.tagline}</span>
               <h2 className="section-title text-white">{t.jT}</h2>
               <p className="section-subtitle text-muted-light">{t.jSub}</p>
             </div>
@@ -670,11 +694,15 @@ export default function App() {
                       <span className="node-dot" />
                       <span className="node-glow" />
                     </div>
-                    <div className="step-period-badge">
-                      <Calendar size={15} />
-                      <span>{step.period}</span>
+                    <div className="step-header-meta">
+                      <div className="step-period-badge">
+                        <Calendar size={15} />
+                        <span>{step.period}</span>
+                      </div>
+                      {step.tag && <span className="step-tag-pill">{step.tag}</span>}
                     </div>
                     <h3 className="step-role-title">{step.role}</h3>
+                    {step.subtitle && <p className="step-subtitle">{step.subtitle}</p>}
                     <p className="step-description">{step.desc}</p>
                   </div>
                 ))}
@@ -847,18 +875,22 @@ export default function App() {
         <section id="why" className="why-section dark-section">
           <div className="wrap">
             <div className="section-header rv">
-              <span className="section-eyebrow cyan">{t.tagline}</span>
+              <span className="section-eyebrow cyan">{t.wBadge || t.tagline}</span>
               <h2 className="section-title text-white">{t.wT}</h2>
               <p className="section-subtitle text-muted-light">{t.wSub}</p>
             </div>
 
             <div className="why-grid">
               {t.w.map((item, idx) => {
-                const featureIcons = ['Award', 'Monitor', 'Keyboard', 'GraduationCap', 'Users'];
+                const defaultIcons = ['Building2', 'Monitor', 'Keyboard', 'GraduationCap', 'MessageCircle'];
+                const iconName = item.icon || defaultIcons[idx] || 'Check';
                 return (
-                  <div key={idx} className="why-card rv" style={{ transitionDelay: `${idx * 80}ms` }}>
-                    <div className="why-icon-wrapper">
-                      <RenderIcon name={featureIcons[idx] || 'Check'} size={26} />
+                  <div key={idx} className={`why-card why-card-${idx} rv`} style={{ transitionDelay: `${idx * 80}ms` }}>
+                    <div className="why-card-top">
+                      <div className="why-icon-wrapper">
+                        <RenderIcon name={iconName} size={24} />
+                      </div>
+                      {item.tag && <span className="why-tag-pill">{item.tag}</span>}
                     </div>
                     <div className="why-content">
                       <h3 className="why-title">{item.title}</h3>

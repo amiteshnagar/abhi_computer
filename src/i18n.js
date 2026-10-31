@@ -82,6 +82,7 @@ export const T = {
         }
       }
     },
+    aBadge: 'About Abhi Computer Center',
     aT: 'Rooted in Pachore. Focused on Your Future.',
     aP: 'Abhi Computer Center has been dedicated to providing quality computer education and higher academic study guidance to learners in Pachore since 2016. We believe in practical, transparent learning that enables students to gain digital proficiency and take confident steps toward their educational goals.',
     establishedYear: 'Established 2016',
@@ -89,41 +90,57 @@ export const T = {
     directorName: 'Sandeep Nagar',
     founderDirector: 'Founding Director (2016–2020)',
     founderName: 'Sanjay Nagar',
+    aboutHighlights: [
+      { label: 'Educational Legacy', val: 'Est. 2016' },
+      { label: 'Campus Location', val: 'Pachore, MP' },
+      { label: 'Programs & Guidance', val: '9 Courses' }
+    ],
     aboutPillars: [
       {
+        tag: 'Practical Lab',
         title: 'Practical Computer Education',
-        desc: 'Hands-on lab training in essential software, office productivity, and computer fundamentals.'
+        desc: 'Hands-on lab training in essential software, office productivity tools, DCA, PGDCA, and creative graphic editing.'
       },
       {
+        tag: 'Typing & Skills',
         title: 'CPCT Typing & Test Guidance',
-        desc: 'Focused preparation for Hindi & English typing along with computer proficiency concepts.'
+        desc: 'Structured Hindi and English typing speed practice along with fundamental computer proficiency concepts for CPCT.'
       },
       {
+        tag: 'Degree Counseling',
         title: 'University Degree Guidance',
-        desc: 'Educational assistance for undergraduate and postgraduate university academic programs.'
+        desc: 'Educational counseling and subject orientation for undergraduate and postgraduate university degree programs.'
       },
       {
+        tag: 'Transparent Support',
         title: 'Student-Centric Environment',
-        desc: 'Direct access to experienced leadership and guidance tailored to individual learning paces.'
+        desc: 'Direct access to experienced institute leadership ensuring clear, authentic information without false claims.'
       }
     ],
-    jT: 'Our Leadership & Journey',
-    jSub: 'Clear, continuous educational guidance serving Pachore since 2016.',
+    jBadge: 'Heritage & Leadership',
+    jT: 'Institute Journey & Leadership',
+    jSub: 'Tracing our verified educational journey and director leadership since 2016 in Pachore.',
     tl: [
       {
         period: '2016',
-        role: 'Foundation in Pachore',
-        desc: 'Abhi Computer Center begins its educational mission in Pachore, Madhya Pradesh.'
+        tag: 'Foundation',
+        role: 'Institute Established in Pachore',
+        subtitle: 'Founding Educational Mission',
+        desc: 'Abhi Computer Center was established in New Colony, Pachore, bringing accessible computer education and academic guidance to local students.'
       },
       {
         period: '2016–2020',
+        tag: 'Directorship',
         role: 'Director: Sanjay Nagar',
-        desc: 'Establishment of core computer diploma training and foundational academic counseling.'
+        subtitle: 'Foundational Leadership Era',
+        desc: 'Director Sanjay Nagar guided the institute through its formative four years, establishing core diploma training (DCA, PGDCA) and foundational university counseling.'
       },
       {
         period: '2021–Present',
+        tag: 'Current Leadership',
         role: 'Director: Sandeep Nagar',
-        desc: 'Expanded digital training, modern CPCT typing preparation, and enhanced student guidance.'
+        subtitle: 'Modernization & Expanded Guidance',
+        desc: 'Director Sandeep Nagar leads the institute, modernizing computer lab facilities, introducing structured CPCT typing preparation, and enhancing student academic guidance.'
       }
     ],
     cT: 'Explore Our Courses',
@@ -155,28 +172,39 @@ export const T = {
     xCats: ['Computer Skills', 'CPCT Preparation', 'Academic Courses'],
     xNote: 'CPCT preparation: contact us to learn about the exam process and our guidance. No exam results are promised.',
     xDirectAction: 'Ask About This Selection',
+    wBadge: 'Core Advantages',
     wT: 'Why Choose Abhi Computer Center',
     wSub: 'A reliable, student-first learning center delivering practical guidance in Pachore.',
     w: [
       {
-        title: 'Established Legacy (Since 2016)',
-        desc: 'Over 8 years of continuous, trusted educational presence helping Pachore students learn and grow.'
+        tag: 'Established 2016',
+        icon: 'Building2',
+        title: 'Established Institute Since 2016',
+        desc: 'Over 8 years of trusted educational presence in Pachore, dedicated to quality computer training and authentic student guidance.'
       },
       {
+        tag: 'Practical Skills',
+        icon: 'Monitor',
         title: 'Practical Computer Education',
-        desc: 'Focus on hands-on practical lab sessions so students understand real-world digital applications.'
+        desc: 'Hands-on computer lab training covering essential office productivity software, DCA, PGDCA, and Adobe Photoshop graphic editing.'
       },
       {
-        title: 'CPCT Typing & Theory Guidance',
-        desc: 'Structured Hindi and English typing practice with guidance on computer exam syllabus.'
+        tag: 'Exam Readiness',
+        icon: 'Keyboard',
+        title: 'CPCT Preparation Guidance',
+        desc: 'Structured Hindi and English typing speed practice and comprehensive guidance on fundamental computer proficiency concepts.'
       },
       {
-        title: 'Academic Degree Assistance',
-        desc: 'Authentic information and counseling for BA, BSc, BCom, MA, and MCom study pathways.'
+        tag: 'Higher Studies',
+        icon: 'GraduationCap',
+        title: 'Academic Course Guidance',
+        desc: 'Authentic information and academic counseling for undergraduate (BA, BSc, BCom) and postgraduate (MA, MCom) study pathways.'
       },
       {
-        title: 'Direct Leadership Communication',
-        desc: 'Speak directly with Director Sandeep Nagar for honest, transparent guidance without middlemen.'
+        tag: 'Direct Access',
+        icon: 'MessageCircle',
+        title: 'Student Enquiry Assistance',
+        desc: 'Direct communication with Director Sandeep Nagar for prompt, honest admission counseling and course guidance without middlemen.'
       }
     ],
     faqT: 'Frequently Asked Questions',
@@ -289,6 +317,7 @@ export const T = {
         }
       }
     },
+    aBadge: 'अभि कंप्यूटर सेंटर के बारे में',
     aT: 'पचोर में जड़ें। आपके भविष्य पर ध्यान।',
     aP: 'अभि कंप्यूटर सेंटर 2016 से पचोर के विद्यार्थियों को गुणवत्तापूर्ण कंप्यूटर शिक्षा और उच्च शैक्षणिक अध्ययन का मार्गदर्शन प्रदान कर रहा है। हमारा उद्देश्य विद्यार्थियों को व्यावहारिक डिजिटल कौशल में दक्ष बनाना और उच्च शिक्षा में सही दिशा देना है ताकि वे अपने लक्ष्यों की ओर आत्मविश्वास से आगे बढ़ सकें।',
     establishedYear: 'स्थापना वर्ष 2016',
@@ -296,41 +325,57 @@ export const T = {
     directorName: 'संदीप नागर',
     founderDirector: 'संस्थापक निदेशक (2016–2020)',
     founderName: 'संजय नागर',
+    aboutHighlights: [
+      { label: 'शैक्षणिक अनुभव', val: '2016 से' },
+      { label: 'संस्थान स्थान', val: 'पचोर (म.प्र.)' },
+      { label: 'उपलब्ध मार्गदर्शन', val: '9 पाठ्यक्रम' }
+    ],
     aboutPillars: [
       {
+        tag: 'प्रैक्टिकल लैब',
         title: 'व्यावहारिक कंप्यूटर शिक्षा',
-        desc: 'कंप्यूटर फंडामेंटल्स, ऑफिस टूल्स और वास्तविक कार्यक्षेत्र में उपयोगी डिजिटल कौशल की हैंड्स-ऑन ट्रेनिंग।'
+        desc: 'कंप्यूटर फंडामेंटल्स, ऑफिस टूल्स, DCA, PGDCA और उपयोगी डिजिटल टूल्स की हैंड्स-ऑन ट्रेनिंग।'
       },
       {
+        tag: 'टाइपिंग व तैयारी',
         title: 'CPCT टाइपिंग एवं परीक्षा तैयारी',
-        desc: 'हिंदी एवं अंग्रेजी टाइपिंग अभ्यास तथा कंप्यूटर थ्योरी की बुनियादी समझ के लिए विशेष अभ्यास।'
+        desc: 'हिंदी एवं अंग्रेजी टाइपिंग अभ्यास तथा आवश्यक कंप्यूटर थ्योरी की योजनाबद्ध तैयारी।'
       },
       {
+        tag: 'डिग्री परामर्श',
         title: 'विश्वविद्यालय डिग्री मार्गदर्शन',
-        desc: 'स्नातक एवं स्नातकोत्तर डिग्री पाठ्यक्रमों की सही जानकारी और शैक्षणिक दिशा-निर्देश।'
+        desc: 'स्नातक एवं स्नातकोत्तर डिग्री पाठ्यक्रमों की सही जानकारी और शैक्षणिक विषय चयन में सहयोग।'
       },
       {
+        tag: 'पारदर्शी सहयोग',
         title: 'विद्यार्थी-केंद्रित वातावरण',
-        desc: 'अनुभवी निदेशक से सीधा संपर्क और प्रत्येक विद्यार्थी की गति के अनुसार व्यक्तिगत मार्गदर्शन।'
+        desc: 'संस्थान के निदेशक से सीधा संपर्क और प्रत्येक विद्यार्थी को बिना किसी भ्रामक दावे के प्रामाणिक मार्गदर्शन।'
       }
     ],
-    jT: 'हमारा नेतृत्व एवं सफ़र',
-    jSub: '2016 से पचोर में निरंतर और विश्वसनीय शैक्षणिक मार्गदर्शन।',
+    jBadge: 'विरासत एवं नेतृत्व',
+    jT: 'संस्थान का सफ़र एवं नेतृत्व',
+    jSub: '2016 से पचोर में निरंतर, प्रामाणिक और समर्पित शैक्षणिक नेतृत्व का इतिहास।',
     tl: [
       {
         period: '2016',
-        role: 'पचोर में स्थापना',
-        desc: 'अभि कंप्यूटर सेंटर ने पचोर, मध्य प्रदेश में अपनी शैक्षणिक यात्रा प्रारंभ की।'
+        tag: 'संस्थान स्थापना',
+        role: 'पचोर में संस्थान की स्थापना',
+        subtitle: 'शैक्षणिक मिशन का आरंभ',
+        desc: 'न्यू कॉलोनी, पचोर में अभि कंप्यूटर सेंटर की स्थापना हुई, जिसका उद्देश्य स्थानीय विद्यार्थियों को कंप्यूटर व उच्च शिक्षा का सुलभ मार्गदर्शन देना था।'
       },
       {
         period: '2016–2020',
+        tag: 'प्रारंभिक नेतृत्व',
         role: 'निदेशक: संजय नागर',
-        desc: 'कंप्यूटर डिप्लोमा शिक्षा की नींव और विद्यार्थियों के लिए बुनियादी मार्गदर्शन का शुभारंभ।'
+        subtitle: 'संस्थापक नेतृत्व काल',
+        desc: 'संस्थापक निदेशक संजय नागर के मार्गदर्शन में संस्थान ने कंप्यूटर डिप्लोमा (DCA, PGDCA) और बुनियादी डिग्री काउंसलिंग की मजबूत नींव रखी।'
       },
       {
         period: '2021–वर्तमान',
+        tag: 'वर्तमान नेतृत्व',
         role: 'निदेशक: संदीप नागर',
-        desc: 'डिजिटल प्रशिक्षण का विस्तार, आधुनिक CPCT टाइपिंग तैयारी और सुदृढ़ छात्र मार्गदर्शन।'
+        subtitle: 'आधुनिकीकरण एवं विस्तारित मार्गदर्शन',
+        desc: 'निदेशक संदीप नागर के नेतृत्व में कंप्यूटर लैब का आधुनिकीकरण, योजनाबद्ध CPCT टाइपिंग तैयारी और छात्रों को व्यक्तिगत शैक्षणिक परामर्श प्रदान किया जा रहा है।'
       }
     ],
     cT: 'हमारे पाठ्यक्रम एवं मार्गदर्शन',
@@ -362,28 +407,39 @@ export const T = {
     xCats: ['कंप्यूटर कौशल', 'CPCT तैयारी', 'शैक्षणिक कोर्स'],
     xNote: 'CPCT तैयारी: परीक्षा प्रक्रिया और हमारे मार्गदर्शन को समझने के लिए संपर्क करें। किसी परीक्षा परिणाम का वादा नहीं किया जाता।',
     xDirectAction: 'इस चयन के बारे में पूछें',
+    wBadge: 'मुख्य विशेषताएं',
     wT: 'अभि कंप्यूटर सेंटर क्यों चुनें',
-    wSub: 'पचोर में विद्यार्थियों के विश्वसनीय और समर्पित शिक्षण संस्थान के मुख्य आधार।',
+    wSub: 'पचोर में विद्यार्थियों के लिए एक विश्वसनीय, पारदर्शी और समर्पित शिक्षण केंद्र।',
     w: [
       {
-        title: 'विश्वसनीय अनुभव (2016 से)',
-        desc: 'पचोर में 8 से अधिक वर्षों से निरंतर विद्यार्थियों को सही दिशा और शिक्षा प्रदान करने की प्रतिबद्धता।'
+        tag: 'स्थापना 2016',
+        icon: 'Building2',
+        title: '2016 से स्थापित विश्वसनीय संस्थान',
+        desc: 'पचोर में 8 से अधिक वर्षों का निरंतर शैक्षणिक अनुभव और विद्यार्थियों का अटूट विश्वास।'
       },
       {
-        title: 'व्यावहारिक कंप्यूटर प्रशिक्षण',
-        desc: 'केवल किताबी नहीं, बल्कि कंप्यूटर लैब में स्वयं अभ्यास करके डिजिटल टूल्स सीखने का अवसर।'
+        tag: 'हैंड्स-ऑन लैब',
+        icon: 'Monitor',
+        title: 'व्यावहारिक कंप्यूटर शिक्षा',
+        desc: 'DCA, PGDCA, फोटोशॉप और ऑफिस टूल्स का कंप्यूटर लैब में स्वयं अभ्यास करके सीखने का अवसर।'
       },
       {
-        title: 'CPCT टाइपिंग एवं थ्योरी गाइडेंस',
-        desc: 'हिंदी और अंग्रेजी टाइपिंग स्पीड व एक्यूरेसी सुधारने हेतु योजनाबद्ध अभ्यास।'
+        tag: 'स्पीड व एक्यूरेसी',
+        icon: 'Keyboard',
+        title: 'CPCT तैयारी मार्गदर्शन',
+        desc: 'CPCT परीक्षा के लिए हिंदी व अंग्रेजी टाइपिंग स्पीड और आवश्यक कंप्यूटर थ्योरी की योजनाबद्ध तैयारी।'
       },
       {
-        title: 'उच्च शिक्षा डिग्री परामर्श',
-        desc: 'BA, BSc, BCom, MA, और MCom जैसे डिग्री पाठ्यक्रमों के लिए सही व प्रामाणिक मार्गदर्शन।'
+        tag: 'उच्च शिक्षा',
+        icon: 'GraduationCap',
+        title: 'शैक्षणिक पाठ्यक्रम मार्गदर्शन',
+        desc: 'BA, BSc, BCom, MA और MCom जैसे डिग्री पाठ्यक्रमों के लिए सही विषय चयन और प्रामाणिक परामर्श।'
       },
       {
-        title: 'सीधा और पारदर्शी संपर्क',
-        desc: 'संस्थान के निदेशक संदीप नागर से सीधा संवाद, कोई बिचौलिया या भ्रामक दावे नहीं।'
+        tag: 'सीधा संवाद',
+        icon: 'MessageCircle',
+        title: 'विद्यार्थी पूछताछ व सहायता',
+        desc: 'निदेशक संदीप नागर से सीधे संपर्क की सुविधा, ताकि प्रवेश व कोर्स से जुड़े सवालों के स्पष्ट व ईमानदार उत्तर मिलें।'
       }
     ],
     faqT: 'अक्सर पूछे जाने वाले प्रश्न',
