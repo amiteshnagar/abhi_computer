@@ -32,7 +32,11 @@ import {
   AlertCircle,
   Calendar,
   Building2,
-  Users
+  Users,
+  Sun,
+  Truck,
+  Zap,
+  TrendingUp
 } from 'lucide-react';
 import { T, COURSES, NAMES, COURSE_FULL_NAMES } from './i18n.js';
 
@@ -59,7 +63,11 @@ const ICONS = {
   Users,
   Building2,
   Calendar,
-  MessageCircle
+  MessageCircle,
+  Sun,
+  Truck,
+  Zap,
+  TrendingUp
 };
 
 const Logo = () => (
@@ -161,7 +169,7 @@ export default function App() {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
 
-    const navSectionIds = ['home', 'about', 'courses', 'explorer', 'why', 'faq', 'contact'];
+    const navSectionIds = ['home', 'about', 'pmkvy', 'courses', 'explorer', 'why', 'faq', 'contact'];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -706,6 +714,229 @@ export default function App() {
                     <p className="step-description">{step.desc}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            4B. PMKVY AUTHORISED TRAINING CENTRE & VOCATIONAL SKILLS
+        ======================================================== */}
+        <section id="pmkvy" className="pmkvy-section light-section alt-bg">
+          <div className="wrap">
+            {/* Header Badge */}
+            <div className="section-badge-center rv">
+              <div className="pmkvy-top-badge">
+                <Award size={16} />
+                <span>{t.pmkvy.badge}</span>
+              </div>
+            </div>
+
+            {/* Authorised Training Centre Recognition Hero Card */}
+            <div className="pmkvy-hero-card rv">
+              <div className="pmkvy-hero-header">
+                <div className="pmkvy-emblem-badge" aria-label="Authorised Training Centre">
+                  <ShieldCheck size={28} className="emblem-icon" />
+                  <span className="emblem-text">PMKVY</span>
+                </div>
+                <div className="pmkvy-hero-titles">
+                  <span className="pmkvy-scheme-sub">{t.pmkvy.fullName}</span>
+                  <h2 className="pmkvy-main-heading">{t.pmkvy.heading}</h2>
+                  <p className="pmkvy-motto">{t.pmkvy.tagline}</p>
+                </div>
+              </div>
+
+              <div className="pmkvy-hero-body">
+                <p className="pmkvy-lead-text">{t.pmkvy.desc}</p>
+                <p className="pmkvy-support-text">{t.pmkvy.supporting}</p>
+              </div>
+
+              <div className="pmkvy-hero-actions">
+                <a
+                  href={t.pmkvy.exploreUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-primary"
+                >
+                  <span>{t.pmkvy.exploreBtn}</span>
+                  <ExternalLink size={17} />
+                </a>
+                <a
+                  href={t.pmkvy.skillIndiaHubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                >
+                  <span>{t.pmkvy.skillIndiaHubBtn}</span>
+                  <ExternalLink size={17} />
+                </a>
+              </div>
+            </div>
+
+            {/* Compact Information Area: About PMKVY */}
+            <div className="pmkvy-about-box rv">
+              <div className="pmkvy-about-header">
+                <div className="about-ico-box">
+                  <BookOpen size={22} />
+                </div>
+                <div>
+                  <h3 className="pmkvy-about-title">{t.pmkvy.aboutHeading}</h3>
+                  <span className="pmkvy-about-sub">{t.pmkvy.aboutSub}</span>
+                </div>
+              </div>
+
+              <p className="pmkvy-about-desc">{t.pmkvy.aboutDesc}</p>
+
+              <div className="pmkvy-objectives-wrapper">
+                <h4 className="pmkvy-obj-heading">{t.pmkvy.objectivesTitle}</h4>
+                <div className="pmkvy-objectives-grid">
+                  {t.pmkvy.objectives.map((obj, idx) => (
+                    <div key={idx} className="pmkvy-obj-item">
+                      <CheckCircle2 size={18} className="obj-check-icon" />
+                      <span>{obj}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="pmkvy-compliance-notice">
+                <AlertCircle size={16} />
+                <span>{t.pmkvy.disclaimer}</span>
+              </div>
+            </div>
+
+            {/* Training Achievements: Two Separate Historical Cards */}
+            <div className="pmkvy-achievements-block rv">
+              <div className="block-header-inline">
+                <div>
+                  <span className="section-eyebrow">{t.tagline}</span>
+                  <h3 className="block-title">{t.pmkvy.achievementsTitle}</h3>
+                  <p className="block-sub">{t.pmkvy.achievementsSub}</p>
+                </div>
+                <div className="achievements-pill-badge">
+                  <Award size={16} />
+                  <span>Institute Records</span>
+                </div>
+              </div>
+
+              <div className="pmkvy-achievements-grid">
+                {t.pmkvy.achievements.map((item) => {
+                  const isLogistics = item.id === 'logistics';
+                  return (
+                    <div key={item.id} className={`achievement-card card-${item.id} rv`}>
+                      <div className="achieve-card-top">
+                        <div className="achieve-icon-wrapper">
+                          <RenderIcon name={isLogistics ? 'Truck' : 'Sun'} size={26} />
+                        </div>
+                        <div className="achieve-period-tag">
+                          <Calendar size={14} />
+                          <span>{item.period}</span>
+                        </div>
+                      </div>
+
+                      <div className="achieve-count-row">
+                        <span className="achieve-big-number">{item.count}</span>
+                        <span className="achieve-count-label">{item.label}</span>
+                      </div>
+
+                      <div className="achieve-card-body">
+                        <div className="achieve-program-meta">
+                          <h4 className="achieve-program-name">{item.program}</h4>
+                          <div className="achieve-meta-badges">
+                            <span className="meta-badge sector">{item.sector}</span>
+                            {item.council && (
+                              <span className="meta-badge council">{item.council}</span>
+                            )}
+                          </div>
+                        </div>
+                        <p className="achieve-desc">{item.desc}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Featured Vocational & Skill Courses */}
+            <div className="pmkvy-courses-block rv">
+              <div className="block-header-inline">
+                <div>
+                  <span className="section-eyebrow">{t.tagline}</span>
+                  <h3 className="block-title">{t.pmkvy.coursesTitle}</h3>
+                  <p className="block-sub">{t.pmkvy.coursesSub}</p>
+                </div>
+                <div className="platform-disclaimer-pill" title={t.pmkvy.platformNote}>
+                  <ShieldCheck size={15} />
+                  <span>{t.pmkvy.platformBadge}</span>
+                </div>
+              </div>
+
+              <div className="pmkvy-courses-grid">
+                {t.pmkvy.courses.map((course) => {
+                  const isSolar = course.id === 'solar-pv';
+                  return (
+                    <div key={course.id} className={`featured-skill-card skill-card-${course.id} rv`}>
+                      <div className="skill-card-top">
+                        <div className={`skill-icon-container ${isSolar ? 'solar' : 'logistics'}`}>
+                          <RenderIcon name={isSolar ? 'Zap' : 'Truck'} size={24} />
+                        </div>
+                        <div className="skill-duration-badge">
+                          <Clock size={14} />
+                          <span>{course.duration}</span>
+                        </div>
+                      </div>
+
+                      <div className="skill-card-body">
+                        <span className="skill-council-tag">{course.council}</span>
+                        <h4 className="skill-course-title">{course.title}</h4>
+                        {course.subtitle && <p className="skill-course-subtitle">{course.subtitle}</p>}
+                        <p className="skill-course-desc">{course.desc}</p>
+
+                        {/* Distinct Skill India Digital Platform Statistics Callout */}
+                        <div className="platform-stats-callout">
+                          <div className="callout-header">
+                            <span className="callout-badge-dot" />
+                            <span className="callout-title">Skill India Digital Platform Data</span>
+                          </div>
+                          <div className="callout-metrics-row">
+                            <div className="metric-chip">
+                              <Users size={14} />
+                              <span>{course.platformEnrolled}</span>
+                            </div>
+                            <div className="metric-chip">
+                              <TrendingUp size={14} />
+                              <span>{course.platformUsers}</span>
+                            </div>
+                          </div>
+                          <small className="callout-note">National portal statistics (distinct from institute training)</small>
+                        </div>
+                      </div>
+
+                      <div className="skill-card-footer">
+                        {course.url ? (
+                          <a
+                            href={course.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="btn btn-outline btn-sm skill-action-btn"
+                          >
+                            <span>{course.urlText}</span>
+                            <ExternalLink size={15} />
+                          </a>
+                        ) : (
+                          <button
+                            type="button"
+                            className="btn btn-outline btn-sm skill-action-btn"
+                            onClick={() => scrollTo('contact')}
+                          >
+                            <span>{t.talk}</span>
+                            <ArrowRight size={15} />
+                          </button>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

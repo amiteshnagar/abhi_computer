@@ -36,8 +36,8 @@ export const COURSE_FULL_NAMES = {
 
 export const T = {
   en: {
-    nav: ['Home', 'About', 'Courses', 'Explorer', 'Why Us', 'FAQs', 'Contact'],
-    navIds: ['home', 'about', 'courses', 'explorer', 'why', 'faq', 'contact'],
+    nav: ['Home', 'About', 'PMKVY', 'Courses', 'Explorer', 'Why Us', 'FAQs', 'Contact'],
+    navIds: ['home', 'about', 'pmkvy', 'courses', 'explorer', 'why', 'faq', 'contact'],
     enq: 'Enquire Now',
     tagline: 'Pachore · Est. 2016',
     instituteName: 'Abhi Computer Center',
@@ -143,6 +143,84 @@ export const T = {
         desc: 'Director Sandeep Nagar leads the institute, modernizing computer lab facilities, introducing structured CPCT typing preparation, and enhancing student academic guidance.'
       }
     ],
+    pmkvy: {
+      badge: 'Skill Development & Vocational Training',
+      heading: 'Authorised PMKVY Training Centre',
+      fullName: 'Pradhan Mantri Kaushal Vikas Yojana (PMKVY)',
+      tagline: 'Skill India. Skilled Youth. Stronger India.',
+      desc: "Abhi Computer Center is an authorised training centre under Pradhan Mantri Kaushal Vikas Yojana (PMKVY), contributing to India's skill development mission through vocational training and industry-oriented skill development programmes.",
+      supporting: 'Through skill development initiatives, we aim to equip learners with practical knowledge, relevant occupational skills and greater opportunities for employment and professional growth.',
+      exploreBtn: 'Explore PMKVY',
+      exploreUrl: 'https://www.skillindiadigital.gov.in/pmkvy-landing',
+      skillIndiaHubBtn: 'Skill India Digital Hub',
+      skillIndiaHubUrl: 'https://www.skillindiadigital.gov.in/',
+      aboutHeading: 'About Pradhan Mantri Kaushal Vikas Yojana',
+      aboutSub: 'Flagship Skill Development Initiative of the Government of India',
+      aboutDesc: 'Pradhan Mantri Kaushal Vikas Yojana is a flagship skill development initiative of the Government of India, implemented under the Ministry of Skill Development and Entrepreneurship. It aims to support skill training and certification, promote industry-relevant skills and improve opportunities for employment and career development.',
+      objectivesTitle: 'Key Scheme Objectives',
+      objectives: [
+        'Industry-relevant skill development.',
+        'Practical vocational training.',
+        'Skill assessment and certification.',
+        'Employment-oriented learning.',
+        'Opportunities for professional development.'
+      ],
+      disclaimer: 'Note: Training programs are conducted as per applicable vocational guidelines. We do not make promises of guaranteed employment, placement, or unverified claims.',
+      achievementsTitle: 'Training Achievements',
+      achievementsSub: 'Verified historical vocational training batches conducted at our institute.',
+      achievements: [
+        {
+          id: 'logistics',
+          count: '600+',
+          label: 'Students Trained',
+          program: 'PMKVY – Logistics',
+          period: '2018–2020',
+          sector: 'Logistics',
+          desc: 'Delivered vocational training in the logistics sector, covering transportation, logistics operations, warehousing and supply chain-related skills.'
+        },
+        {
+          id: 'solar',
+          count: '400+',
+          label: 'Students Trained',
+          program: 'Solar PV Installer (Suryamitra)',
+          period: '2025',
+          sector: 'Green Jobs',
+          council: 'Skill Council for Green Jobs (SCGJ)',
+          desc: 'Provided skill-oriented training in solar photovoltaic systems, including installation, configuration, inspection, testing, commissioning and safety practices.'
+        }
+      ],
+      coursesTitle: 'Featured Skill Development Courses',
+      coursesSub: 'Vocational courses aligned with national skill development frameworks.',
+      platformBadge: 'Skill India Digital Platform Information',
+      platformNote: 'Official Skill India Digital Platform Statistics (National portal information, distinct from institute training counts)',
+      courses: [
+        {
+          id: 'solar-pv',
+          title: 'Solar PV Installer (Suryamitra)',
+          council: 'Skill Council for Green Jobs (SCGJ)',
+          sector: 'Green Jobs',
+          duration: '14 Hours',
+          desc: 'Skill-oriented training curriculum covering solar PV systems, configuration, testing, and rooftop solar safety practices.',
+          platformEnrolled: '16,577+ Enrolled',
+          platformUsers: '53 Users',
+          url: 'https://www.skillindiadigital.gov.in/courses/detail/83f8141d-b4a0-49c5-b74e-9055fdb7d1b1',
+          urlText: 'View on Skill India Digital'
+        },
+        {
+          id: 'scm',
+          title: 'Certificate Course on Supply Chain Management',
+          subtitle: 'Transportation, Logistics and Warehousing',
+          council: 'Reliance Foundation Skilling Academy',
+          category: 'Management & Entrepreneurship and Professional',
+          duration: '120 Hours',
+          desc: 'Vocational curriculum addressing essential supply chain logistics, operations, inventory warehousing, and transport systems.',
+          platformEnrolled: '9,440+ Enrolled',
+          platformUsers: '81 Users',
+          url: null,
+          urlText: null
+        }
+      ]
+    },
     cT: 'Explore Our Courses',
     cP: 'Practical computer diplomas and academic study guidance. Contact us for current fee structures, batch schedules, and admission requirements.',
     tabs: {
@@ -271,8 +349,8 @@ export const T = {
     closeMenu: 'Close Menu'
   },
   hi: {
-    nav: ['होम', 'हमारे बारे में', 'कोर्स', 'एक्सप्लोरर', 'विशेषताएं', 'सामान्य प्रश्न', 'संपर्क'],
-    navIds: ['home', 'about', 'courses', 'explorer', 'why', 'faq', 'contact'],
+    nav: ['होम', 'हमारे बारे में', 'पीएमकेवीवाई', 'कोर्स', 'एक्सप्लोरर', 'विशेषताएं', 'सामान्य प्रश्न', 'संपर्क'],
+    navIds: ['home', 'about', 'pmkvy', 'courses', 'explorer', 'why', 'faq', 'contact'],
     enq: 'अभी पूछें',
     tagline: 'पचोर · स्थापना 2016',
     instituteName: 'अभि कंप्यूटर सेंटर',
@@ -378,6 +456,84 @@ export const T = {
         desc: 'निदेशक संदीप नागर के नेतृत्व में कंप्यूटर लैब का आधुनिकीकरण, योजनाबद्ध CPCT टाइपिंग तैयारी और छात्रों को व्यक्तिगत शैक्षणिक परामर्श प्रदान किया जा रहा है।'
       }
     ],
+    pmkvy: {
+      badge: 'कौशल विकास एवं व्यावसायिक प्रशिक्षण',
+      heading: 'पीएमकेवीवाई अधिकृत प्रशिक्षण केंद्र',
+      fullName: 'प्रधानमंत्री कौशल विकास योजना (PMKVY)',
+      tagline: 'कौशल भारत, कुशल युवा, सशक्त भारत',
+      desc: "अभि कंप्यूटर सेंटर प्रधानमंत्री कौशल विकास योजना (PMKVY) के अंतर्गत एक अधिकृत प्रशिक्षण केंद्र है, जो व्यावसायिक प्रशिक्षण और उद्योग-उन्मुख कौशल विकास कार्यक्रमों के माध्यम से भारत के कौशल विकास मिशन में सक्रिय योगदान दे रहा है।",
+      supporting: 'कौशल विकास पहलों के माध्यम से, हमारा उद्देश्य विद्यार्थियों को व्यावहारिक ज्ञान, प्रासंगिक व्यावसायिक कौशल और रोजगार व व्यावसायिक विकास के बेहतर अवसर प्रदान करना है।',
+      exploreBtn: 'Explore PMKVY',
+      exploreUrl: 'https://www.skillindiadigital.gov.in/pmkvy-landing',
+      skillIndiaHubBtn: 'Skill India Digital Hub',
+      skillIndiaHubUrl: 'https://www.skillindiadigital.gov.in/',
+      aboutHeading: 'About Pradhan Mantri Kaushal Vikas Yojana',
+      aboutSub: 'भारत सरकार के कौशल विकास एवं उद्यमिता मंत्रालय की प्रमुख कौशल पहल',
+      aboutDesc: 'प्रधानमंत्री कौशल विकास योजना भारत सरकार की एक प्रमुख कौशल विकास पहल है, जिसे कौशल विकास एवं उद्यमिता मंत्रालय के अंतर्गत संचालित किया जाता है। इसका उद्देश्य कौशल प्रशिक्षण व प्रमाणीकरण को बढ़ावा देना, उद्योग-प्रासंगिक कौशलों को प्रोत्साहित करना और रोजगार व करियर के अवसरों को बेहतर बनाना है।',
+      objectivesTitle: 'योजना के मुख्य उद्देश्य',
+      objectives: [
+        'उद्योग-प्रासंगिक कौशल विकास।',
+        'व्यावहारिक व्यावसायिक प्रशिक्षण।',
+        'कौशल मूल्यांकन एवं प्रमाणीकरण।',
+        'रोजगार-उन्मुख शिक्षण।',
+        'व्यावसायिक विकास के अवसर।'
+      ],
+      disclaimer: 'नोट: प्रशिक्षण कार्यक्रम लागू व्यावसायिक दिशा-निर्देशों के अनुसार संचालित किए जाते हैं। हम किसी भी प्रकार के गारंटीड रोजगार, नौकरी या अप्रमाणित दावों का वादा नहीं करते।',
+      achievementsTitle: 'Training Achievements (प्रशिक्षण उपलब्धियाँ)',
+      achievementsSub: 'हमारे संस्थान द्वारा संचालित सत्यापित ऐतिहासिक व्यावसायिक प्रशिक्षण बैच।',
+      achievements: [
+        {
+          id: 'logistics',
+          count: '600+',
+          label: 'Students Trained (प्रशिक्षित विद्यार्थी)',
+          program: 'PMKVY – Logistics',
+          period: '2018–2020',
+          sector: 'Logistics',
+          desc: 'परिवहन, लॉजिस्टिक्स संचालन, वेयरहाउसिंग और सप्लाई चेन संबंधी कौशलों पर केंद्रित व्यावसायिक प्रशिक्षण प्रदान किया गया।'
+        },
+        {
+          id: 'solar',
+          count: '400+',
+          label: 'Students Trained (प्रशिक्षित विद्यार्थी)',
+          program: 'Solar PV Installer (Suryamitra)',
+          period: '2025',
+          sector: 'Green Jobs',
+          council: 'Skill Council for Green Jobs (SCGJ)',
+          desc: 'सोलर फोटोवोल्टाइक सिस्टम की स्थापना, कॉन्फ़िगरेशन, निरीक्षण, परीक्षण, कमीशनिंग और सुरक्षा मानकों पर व्यावहारिक प्रशिक्षण दिया गया।'
+        }
+      ],
+      coursesTitle: 'Featured Skill Development Courses',
+      coursesSub: 'राष्ट्रीय कौशल विकास मानकों के अनुरूप उद्योग-उन्मुख व्यावसायिक पाठ्यक्रम।',
+      platformBadge: 'स्किल इंडिया डिजिटल प्लेटफॉर्म जानकारी',
+      platformNote: 'आधिकारिक स्किल इंडिया डिजिटल प्लेटफॉर्म आंकड़े (राष्ट्रीय पोर्टल का डेटा, संस्थान के प्रशिक्षण से अलग)',
+      courses: [
+        {
+          id: 'solar-pv',
+          title: 'Solar PV Installer (Suryamitra)',
+          council: 'Skill Council for Green Jobs (SCGJ)',
+          sector: 'Green Jobs',
+          duration: '14 घंटे',
+          desc: 'सोलर पीवी सिस्टम स्थापना, विद्युत विन्यास, सुरक्षा परीक्षण और रूफटॉप सोलर स्थापना पर व्यापक प्रशिक्षण पाठ्यक्रम।',
+          platformEnrolled: '16,577+ नामांकित',
+          platformUsers: '53 यूजर्स',
+          url: 'https://www.skillindiadigital.gov.in/courses/detail/83f8141d-b4a0-49c5-b74e-9055fdb7d1b1',
+          urlText: 'Skill India Digital पर देखें'
+        },
+        {
+          id: 'scm',
+          title: 'Certificate Course on Supply Chain Management',
+          subtitle: 'Transportation, Logistics and Warehousing',
+          council: 'Reliance Foundation Skilling Academy',
+          category: 'Management & Entrepreneurship and Professional',
+          duration: '120 घंटे',
+          desc: 'सप्लाई चेन लॉजिस्टिक्स, फ्रेट प्रबंधन, इन्वेंट्री वेयरहाउसिंग और आधुनिक वितरण कार्यों का गहन व्यावसायिक अध्ययन।',
+          platformEnrolled: '9,440+ नामांकित',
+          platformUsers: '81 यूजर्स',
+          url: null,
+          urlText: null
+        }
+      ]
+    },
     cT: 'हमारे पाठ्यक्रम एवं मार्गदर्शन',
     cP: 'व्यावहारिक कंप्यूटर डिप्लोमा एवं शैक्षणिक अध्ययन मार्गदर्शन। वर्तमान फीस, बैच समय और प्रवेश जानकारी के लिए संपर्क करें।',
     tabs: {
