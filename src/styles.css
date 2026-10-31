@@ -344,7 +344,29 @@ section {
 
 .brand-logo {
   flex-shrink: 0;
-  filter: drop-shadow(0 2px 8px rgba(49, 91, 255, 0.3));
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(66, 217, 245, 0.25);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.navbar-brand:hover .brand-logo {
+  transform: scale(1.05);
+  border-color: var(--cyan);
+}
+
+.navbar-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .brand-text {
@@ -1574,6 +1596,82 @@ section {
   border-color: var(--cyan);
   background: rgba(66, 217, 245, 0.15);
   color: var(--cyan);
+}
+
+/* PMKVY Institutional Recognition Showcase */
+.pmkvy-recognition-block {
+  margin-bottom: 48px;
+}
+
+.recognition-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.recognition-logo-card {
+  background: var(--light-surface);
+  border: 2px solid var(--light-border);
+  border-radius: var(--radius-xl);
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.recognition-logo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(49, 91, 255, 0.35);
+}
+
+.recognition-logo-wrap {
+  width: 100%;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: var(--radius-lg);
+  padding: 12px;
+}
+
+.recognition-logo-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.recognition-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(49, 91, 255, 0.08);
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.recognition-name {
+  font-size: 1.08rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.recognition-desc {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  line-height: 1.5;
 }
 
 /* About PMKVY Panel */
@@ -3160,6 +3258,66 @@ section {
   word-break: break-all;
 }
 
+/* Footer Recognition Strip */
+.footer-recognition-strip {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+  padding: 18px 0;
+}
+
+.footer-rec-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.footer-rec-heading {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--text-light-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.footer-rec-logos {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.footer-rec-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #FFFFFF;
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.footer-rec-item:hover {
+  transform: translateY(-2px);
+}
+
+.footer-rec-img {
+  height: 26px;
+  width: auto;
+  max-width: 80px;
+  object-fit: contain;
+}
+
+.footer-rec-item span {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #0F172A;
+  letter-spacing: 0.02em;
+}
+
 /* Footer Bottom Bar */
 .footer-bottom-bar {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
@@ -3301,12 +3459,32 @@ section {
     flex-direction: column;
     align-items: flex-start;
   }
+
+  .recognition-logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 /* Mobile: 580px */
 @media (max-width: 580px) {
   .hero-title {
     font-size: 2.7rem;
+  }
+
+  .recognition-logos-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-rec-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .footer-rec-logos {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px;
   }
 
   .courses-grid {

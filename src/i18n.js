@@ -3,6 +3,8 @@ export const COURSES = [
   ['pgdca', 'computer', 'Laptop'],
   ['cpct', 'computer', 'Keyboard'],
   ['photoshop', 'computer', 'Palette'],
+  ['excel', 'computer', 'FileSpreadsheet'],
+  ['tally', 'computer', 'Receipt'],
   ['ba', 'academic', 'GraduationCap'],
   ['bsc', 'academic', 'FlaskConical'],
   ['bcom', 'academic', 'Calculator'],
@@ -15,6 +17,8 @@ export const NAMES = {
   pgdca: 'PGDCA',
   cpct: 'CPCT',
   photoshop: 'Adobe Photoshop',
+  excel: 'Microsoft Excel',
+  tally: 'Tally Prime',
   ba: 'BA',
   bsc: 'BSc',
   bcom: 'BCom',
@@ -27,6 +31,8 @@ export const COURSE_FULL_NAMES = {
   pgdca: 'Post Graduate Diploma in Computer Applications',
   cpct: 'Computer Proficiency Certification Test',
   photoshop: 'Adobe Photoshop & Graphic Editing',
+  excel: 'Microsoft Excel & Advanced Spreadsheet Skills',
+  tally: 'Tally Prime with GST & Computerized Accounting',
   ba: 'Bachelor of Arts (Degree Guidance)',
   bsc: 'Bachelor of Science (Degree Guidance)',
   bcom: 'Bachelor of Commerce (Degree Guidance)',
@@ -50,7 +56,7 @@ export const T = {
     admissionsOpen: 'Enquiries Welcome',
     heroStats: [
       { label: 'Educational Legacy', val: 'Since 2016' },
-      { label: 'Programs Offered', val: '9 Courses' },
+      { label: 'Programs Offered', val: '11 Courses' },
       { label: 'Campus Location', val: 'Pachore, MP' }
     ],
     heroDashboard: {
@@ -93,7 +99,7 @@ export const T = {
     aboutHighlights: [
       { label: 'Educational Legacy', val: 'Est. 2016' },
       { label: 'Campus Location', val: 'Pachore, MP' },
-      { label: 'Programs & Guidance', val: '9 Courses' }
+      { label: 'Programs & Guidance', val: '11 Courses' }
     ],
     aboutPillars: [
       {
@@ -154,6 +160,31 @@ export const T = {
       exploreUrl: 'https://www.skillindiadigital.gov.in/pmkvy-landing',
       skillIndiaHubBtn: 'Skill India Digital Hub',
       skillIndiaHubUrl: 'https://www.skillindiadigital.gov.in/',
+      recognitionTitle: 'Skill Development & Institutional Recognition',
+      recognitionSub: 'Aligned with national vocational initiatives and industry skill development frameworks.',
+      recognitions: [
+        {
+          name: 'PMKVY',
+          title: 'Pradhan Mantri Kaushal Vikas Yojana',
+          logo: '/images/pmkvy-logo.png',
+          badge: 'Government Scheme',
+          desc: 'Flagship skill development initiative under the Ministry of Skill Development and Entrepreneurship (MSDE).'
+        },
+        {
+          name: 'Skill India',
+          title: 'Skill India Mission & Digital Hub',
+          logo: '/images/skill-india-logo.jpg',
+          badge: 'National Mission',
+          desc: 'National campaign to empower Indian youth with skill-based vocational education and certified training.'
+        },
+        {
+          name: 'NSDC',
+          title: 'National Skill Development Corporation',
+          logo: '/images/nsdc-logo.png',
+          badge: 'Skill Ecosystem Partner',
+          desc: 'Catalyzing sustainable skill ecosystems and vocational training standards across India.'
+        }
+      ],
       aboutHeading: 'About Pradhan Mantri Kaushal Vikas Yojana',
       aboutSub: 'Flagship Skill Development Initiative of the Government of India',
       aboutDesc: 'Pradhan Mantri Kaushal Vikas Yojana is a flagship skill development initiative of the Government of India, implemented under the Ministry of Skill Development and Entrepreneurship. It aims to support skill training and certification, promote industry-relevant skills and improve opportunities for employment and career development.',
@@ -224,8 +255,8 @@ export const T = {
     cT: 'Explore Our Courses',
     cP: 'Practical computer diplomas and academic study guidance. Contact us for current fee structures, batch schedules, and admission requirements.',
     tabs: {
-      all: 'All Courses (9)',
-      computer: 'Computer Skills (4)',
+      all: 'All Courses (11)',
+      computer: 'Computer Skills (6)',
       academic: 'Academic Degrees (5)'
     },
     catLabels: {
@@ -239,6 +270,8 @@ export const T = {
       pgdca: 'In-depth postgraduate computer applications program for graduates looking to advance their technical capabilities.',
       cpct: 'Comprehensive Hindi and English typing practice and computer proficiency concepts for CPCT exam readiness.',
       photoshop: 'Creative photo editing, graphic composition, banner design, and digital visual tools with Adobe Photoshop.',
+      excel: 'Master basic-to-advanced spreadsheet management, data formatting, VLOOKUP/IF formulas, pivot tables, and business charts.',
+      tally: 'Learn computerized accounting, company master setup, inventory vouchers, GST invoicing, daybook management, and financial balance sheets.',
       ba: 'Guidance for Bachelor of Arts degree subjects in humanities, languages, and social studies.',
       bsc: 'Academic guidance for Bachelor of Science degree pathways across scientific disciplines.',
       bcom: 'Comprehensive counseling for Bachelor of Commerce degree studies covering commerce and accounting.',
@@ -264,7 +297,7 @@ export const T = {
         tag: 'Practical Skills',
         icon: 'Monitor',
         title: 'Practical Computer Education',
-        desc: 'Hands-on computer lab training covering essential office productivity software, DCA, PGDCA, and Adobe Photoshop graphic editing.'
+        desc: 'Hands-on computer lab training covering essential office productivity software, DCA, PGDCA, Adobe Photoshop, Microsoft Excel, and Tally Prime.'
       },
       {
         tag: 'Exam Readiness',
@@ -290,7 +323,7 @@ export const T = {
     faqs: [
       {
         q: 'What courses are offered at Abhi Computer Center?',
-        a: 'We offer computer courses including DCA, PGDCA, CPCT typing and computer preparation, and Adobe Photoshop. In addition, we provide academic guidance for degree programs including BA, BSc, BCom, MA, and MCom.'
+        a: 'We offer computer courses including DCA, PGDCA, CPCT typing and computer preparation, Adobe Photoshop, Microsoft Excel, and Tally Prime. In addition, we provide academic guidance for degree programs including BA, BSc, BCom, MA, and MCom.'
       },
       {
         q: 'How can I learn about course fees, eligibility, and batch timings?',
@@ -321,6 +354,12 @@ export const T = {
     mobPlaceholder: '10-digit mobile number (e.g. 9876543210)',
     course: 'Interested Course',
     pick: 'Select a course...',
+    prefLang: 'Preferred Language (Optional)',
+    prefLangOptions: {
+      none: 'No Preference',
+      en: 'English',
+      hi: 'Hindi (हिंदी)'
+    },
     msg: 'Optional Message / Question',
     msgPlaceholder: 'Tell us any specific questions or batch preferences...',
     consent: 'I agree to be contacted by Abhi Computer Center regarding my course enquiry.',
@@ -363,7 +402,7 @@ export const T = {
     admissionsOpen: 'पूछताछ का स्वागत है',
     heroStats: [
       { label: 'शैक्षणिक अनुभव', val: '2016 से' },
-      { label: 'उपलब्ध पाठ्यक्रम', val: '9 कोर्स' },
+      { label: 'उपलब्ध पाठ्यक्रम', val: '11 कोर्स' },
       { label: 'संस्थान स्थान', val: 'पचोर (म.प्र.)' }
     ],
     heroDashboard: {
@@ -406,7 +445,7 @@ export const T = {
     aboutHighlights: [
       { label: 'शैक्षणिक अनुभव', val: '2016 से' },
       { label: 'संस्थान स्थान', val: 'पचोर (म.प्र.)' },
-      { label: 'उपलब्ध मार्गदर्शन', val: '9 पाठ्यक्रम' }
+      { label: 'उपलब्ध मार्गदर्शन', val: '11 पाठ्यक्रम' }
     ],
     aboutPillars: [
       {
@@ -467,6 +506,31 @@ export const T = {
       exploreUrl: 'https://www.skillindiadigital.gov.in/pmkvy-landing',
       skillIndiaHubBtn: 'Skill India Digital Hub',
       skillIndiaHubUrl: 'https://www.skillindiadigital.gov.in/',
+      recognitionTitle: 'कौशल विकास एवं संस्थागत मान्यताएं',
+      recognitionSub: 'राष्ट्रीय व्यावसायिक कौशल पहलों एवं उद्योग-मानक स्किलिंग फ्रेमवर्क से संबद्ध।',
+      recognitions: [
+        {
+          name: 'PMKVY',
+          title: 'प्रधानमंत्री कौशल विकास योजना (PMKVY)',
+          logo: '/images/pmkvy-logo.png',
+          badge: 'सरकारी योजना',
+          desc: 'कौशल विकास एवं उद्यमिता मंत्रालय (MSDE) की प्रमुख कौशल विकास योजना।'
+        },
+        {
+          name: 'Skill India',
+          title: 'स्किल इंडिया मिशन व डिजिटल हब',
+          logo: '/images/skill-india-logo.jpg',
+          badge: 'राष्ट्रीय मिशन',
+          desc: 'भारतीय युवाओं को उद्योग-प्रासंगिक कौशल और प्रमाणित प्रशिक्षण से सशक्त बनाने की राष्ट्रीय पहल।'
+        },
+        {
+          name: 'NSDC',
+          title: 'राष्ट्रीय कौशल विकास निगम (NSDC)',
+          logo: '/images/nsdc-logo.png',
+          badge: 'स्किल इकोसिस्टम पार्टनर',
+          desc: 'भारत में गुणवत्तापूर्ण व्यावसायिक प्रशिक्षण और कौशल इकोसिस्टम को विस्तार देने वाली संस्था।'
+        }
+      ],
       aboutHeading: 'About Pradhan Mantri Kaushal Vikas Yojana',
       aboutSub: 'भारत सरकार के कौशल विकास एवं उद्यमिता मंत्रालय की प्रमुख कौशल पहल',
       aboutDesc: 'प्रधानमंत्री कौशल विकास योजना भारत सरकार की एक प्रमुख कौशल विकास पहल है, जिसे कौशल विकास एवं उद्यमिता मंत्रालय के अंतर्गत संचालित किया जाता है। इसका उद्देश्य कौशल प्रशिक्षण व प्रमाणीकरण को बढ़ावा देना, उद्योग-प्रासंगिक कौशलों को प्रोत्साहित करना और रोजगार व करियर के अवसरों को बेहतर बनाना है।',
@@ -537,8 +601,8 @@ export const T = {
     cT: 'हमारे पाठ्यक्रम एवं मार्गदर्शन',
     cP: 'व्यावहारिक कंप्यूटर डिप्लोमा एवं शैक्षणिक अध्ययन मार्गदर्शन। वर्तमान फीस, बैच समय और प्रवेश जानकारी के लिए संपर्क करें।',
     tabs: {
-      all: 'सभी कोर्स (9)',
-      computer: 'कंप्यूटर कौशल (4)',
+      all: 'सभी कोर्स (11)',
+      computer: 'कंप्यूटर कौशल (6)',
       academic: 'शैक्षणिक डिग्री (5)'
     },
     catLabels: {
@@ -552,6 +616,8 @@ export const T = {
       pgdca: 'स्नातक विद्यार्थियों के लिए कंप्यूटर एप्लीकेशन का गहन स्नातकोत्तर डिप्लोमा (PGDCA)।',
       cpct: 'CPCT परीक्षा के लिए हिंदी व अंग्रेजी टाइपिंग अभ्यास और आवश्यक कंप्यूटर अवधारणाओं की तैयारी।',
       photoshop: 'एडोबी फोटोशॉप द्वारा फोटो एडिटिंग, ग्राफिक डिज़ाइन, बैनर निर्माण और डिजिटल विज़ुअल कार्य सीखें।',
+      excel: 'बेसिक से एडवांस्ड स्प्रेडशीट प्रबंधन, डेटा फॉर्मेटिंग, VLOOKUP/IF फॉर्मूले, पिवट टेबल, चार्ट्स और डेटा विश्लेषण में दक्षता प्राप्त करें।',
+      tally: 'कम्प्यूटरीकृत अकाउंटिंग, कंपनी क्रिएशन, इन्वेंट्री व वाउचर एंट्री, जीएसटी इनवॉइसिंग, डे-बुक और बैलेंस शीट तैयार करना सीखें।',
       ba: 'बैचलर ऑफ आर्ट्स (BA) के विभिन्न विषयों, विकल्पों और अध्ययन प्रक्रिया के लिए शैक्षणिक मार्गदर्शन।',
       bsc: 'बैचलर ऑफ साइंस (BSc) डिग्री संकाय के लिए विस्तृत शैक्षणिक मार्गदर्शन और प्रवेश परामर्श।',
       bcom: 'बैचलर ऑफ कॉमर्स (BCom) के तहत लेखांकन, वित्त और वाणिज्य अध्ययन के लिए मार्गदर्शन।',
@@ -577,7 +643,7 @@ export const T = {
         tag: 'हैंड्स-ऑन लैब',
         icon: 'Monitor',
         title: 'व्यावहारिक कंप्यूटर शिक्षा',
-        desc: 'DCA, PGDCA, फोटोशॉप और ऑफिस टूल्स का कंप्यूटर लैब में स्वयं अभ्यास करके सीखने का अवसर।'
+        desc: 'DCA, PGDCA, फोटोशॉप, माइक्रोसॉफ्ट एक्सेल, टैली प्राइम और ऑफिस टूल्स का कंप्यूटर लैब में स्वयं अभ्यास करके सीखने का अवसर।'
       },
       {
         tag: 'स्पीड व एक्यूरेसी',
@@ -603,7 +669,7 @@ export const T = {
     faqs: [
       {
         q: 'अभि कंप्यूटर सेंटर में कौन-कौन से कोर्स उपलब्ध हैं?',
-        a: 'हमारे यहाँ कंप्यूटर पाठ्यक्रमों में DCA, PGDCA, CPCT टाइपिंग व कंप्यूटर तैयारी, और Adobe Photoshop शामिल हैं। साथ ही BA, BSc, BCom, MA और MCom डिग्री पाठ्यक्रमों के लिए शैक्षणिक मार्गदर्शन दिया जाता है।'
+        a: 'हमारे यहाँ कंप्यूटर पाठ्यक्रमों में DCA, PGDCA, CPCT टाइपिंग व कंप्यूटर तैयारी, Adobe Photoshop, Microsoft Excel, और Tally Prime शामिल हैं। साथ ही BA, BSc, BCom, MA और MCom डिग्री पाठ्यक्रमों के लिए शैक्षणिक मार्गदर्शन दिया जाता है।'
       },
       {
         q: 'कोर्स फीस, योग्यता और बैच समय की जानकारी कैसे मिलेगी?',
@@ -634,6 +700,12 @@ export const T = {
     mobPlaceholder: '10 अंकों का मोबाइल नंबर (उदा. 9876543210)',
     course: 'इच्छित कोर्स',
     pick: 'कोर्स चुनें...',
+    prefLang: 'पसंदीदा भाषा (वैकल्पिक)',
+    prefLangOptions: {
+      none: 'कोई विशेष प्राथमिकता नहीं',
+      en: 'English (अंग्रेज़ी)',
+      hi: 'हिंदी (Hindi)'
+    },
     msg: 'संदेश / प्रश्न (वैकल्पिक)',
     msgPlaceholder: 'कोई विशेष प्रश्न या समय संबंधी रुचि यहाँ लिखें...',
     consent: 'मैं अपनी पूछताछ के सिलसिले में अभि कंप्यूटर सेंटर द्वारा संपर्क किए जाने से सहमत हूँ।',

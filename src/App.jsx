@@ -4,6 +4,8 @@ import {
   Laptop,
   Keyboard,
   Palette,
+  FileSpreadsheet,
+  Receipt,
   GraduationCap,
   FlaskConical,
   Calculator,
@@ -51,6 +53,8 @@ const ICONS = {
   Laptop,
   Keyboard,
   Palette,
+  FileSpreadsheet,
+  Receipt,
   GraduationCap,
   FlaskConical,
   Calculator,
@@ -72,24 +76,14 @@ const ICONS = {
 
 const Logo = () => (
   <div className="brand-logo" aria-hidden="true">
-    <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
-      <defs>
-        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#315BFF" />
-          <stop offset="100%" stopColor="#42D9F5" />
-        </linearGradient>
-      </defs>
-      <rect width="64" height="64" rx="16" fill="#0B1020" stroke="rgba(66, 217, 245, 0.3)" strokeWidth="2" />
-      <path
-        d="M18 46 L32 16 L46 46"
-        stroke="url(#logoGrad)"
-        strokeWidth="5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M23 37 H41" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
-      <circle cx="48" cy="18" r="4.5" fill="#42D9F5" />
-    </svg>
+    <img
+      src="/images/abhi-computer-center-logo.png"
+      alt="Abhi Computer Center Logo"
+      className="navbar-logo-img"
+      width="44"
+      height="44"
+      loading="eager"
+    />
   </div>
 );
 
@@ -148,6 +142,7 @@ export default function App() {
     name: '',
     mob: '',
     course: '',
+    prefLang: '',
     msg: '',
     consent: false
   });
@@ -230,7 +225,7 @@ export default function App() {
   const explorerOptions = [
     {
       cat: 'computer',
-      courses: ['dca', 'pgdca', 'photoshop']
+      courses: ['dca', 'pgdca', 'photoshop', 'excel', 'tally']
     },
     {
       cat: 'typing',
@@ -257,9 +252,18 @@ export default function App() {
     let message = `${t.msgHead}\n\n`;
     message += `• Student Name: ${formData.name.trim()}\n`;
     message += `• Mobile Number: ${cleanMob}\n`;
-    message += `• Interested Program: ${fullCourseName} (${selectedCourseName})\n`;
+    message += `• Course: ${fullCourseName} (${selectedCourseName})\n`;
+    if (formData.prefLang) {
+      const langLabel =
+        formData.prefLang === 'hi'
+          ? 'Hindi (हिंदी)'
+          : formData.prefLang === 'en'
+          ? 'English'
+          : formData.prefLang;
+      message += `• Preferred Language: ${langLabel}\n`;
+    }
     if (formData.msg.trim()) {
-      message += `• Message / Query: ${formData.msg.trim()}\n`;
+      message += `• Message: ${formData.msg.trim()}\n`;
     }
     message += `\n${t.msgTail}`;
 
@@ -770,6 +774,41 @@ export default function App() {
                   <span>{t.pmkvy.skillIndiaHubBtn}</span>
                   <ExternalLink size={17} />
                 </a>
+              </div>
+            </div>
+
+            {/* Institutional Recognition Showcase */}
+            <div className="pmkvy-recognition-block rv">
+              <div className="block-header-inline">
+                <div>
+                  <span className="section-eyebrow">{t.tagline}</span>
+                  <h3 className="block-title">{t.pmkvy.recognitionTitle}</h3>
+                  <p className="block-sub">{t.pmkvy.recognitionSub}</p>
+                </div>
+                <div className="achievements-pill-badge">
+                  <ShieldCheck size={16} />
+                  <span>National Initiatives</span>
+                </div>
+              </div>
+
+              <div className="recognition-logos-grid">
+                {t.pmkvy.recognitions.map((item, idx) => (
+                  <div key={idx} className="recognition-logo-card rv">
+                    <div className="recognition-logo-wrap">
+                      <img
+                        src={item.logo}
+                        alt={`${item.name} Logo`}
+                        className="recognition-logo-img"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="recognition-logo-info">
+                      <span className="recognition-badge">{item.badge}</span>
+                      <h4 className="recognition-name">{item.title}</h4>
+                      <p className="recognition-desc">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -1333,6 +1372,25 @@ export default function App() {
                   )}
                 </div>
 
+                {/* Preferred Language (Optional) */}
+                <div className="form-group">
+                  <label htmlFor="f-lang" className="form-label">
+                    {t.prefLang}
+                  </label>
+                  <div className="select-wrapper">
+                    <select
+                      id="f-lang"
+                      value={formData.prefLang}
+                      className="form-select"
+                      onChange={(e) => setFormData({ ...formData, prefLang: e.target.value })}
+                    >
+                      <option value="">{t.prefLangOptions.none}</option>
+                      <option value="en">{t.prefLangOptions.en}</option>
+                      <option value="hi">{t.prefLangOptions.hi}</option>
+                    </select>
+                  </div>
+                </div>
+
                 {/* Optional Message */}
                 <div className="form-group">
                   <label htmlFor="f-msg" className="form-label">
@@ -1594,6 +1652,50 @@ export default function App() {
               <div className="footer-contact-item address-item">
                 <MapPin size={16} />
                 <span>{t.addr}</span>
+              </div>
+              <div className="footer-contact-item hours-item">
+                <Clock size={16} />
+                <span>Mon – Sat: 8:00 AM – 7:00 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Government Skill Development & Affiliations Strip */}
+        <div className="footer-recognition-strip">
+          <div className="wrap footer-rec-inner">
+            <span className="footer-rec-heading">
+              {lang === 'hi'
+                ? 'कौशल विकास व संस्थागत संबद्धता:'
+                : 'Skill Development & Institutional Recognition:'}
+            </span>
+            <div className="footer-rec-logos">
+              <div className="footer-rec-item" title="Pradhan Mantri Kaushal Vikas Yojana (PMKVY)">
+                <img
+                  src="/images/pmkvy-logo.png"
+                  alt="PMKVY Logo"
+                  className="footer-rec-img"
+                  loading="lazy"
+                />
+                <span>PMKVY</span>
+              </div>
+              <div className="footer-rec-item" title="Skill India Digital Hub">
+                <img
+                  src="/images/skill-india-logo.jpg"
+                  alt="Skill India Logo"
+                  className="footer-rec-img"
+                  loading="lazy"
+                />
+                <span>Skill India</span>
+              </div>
+              <div className="footer-rec-item" title="National Skill Development Corporation (NSDC)">
+                <img
+                  src="/images/nsdc-logo.png"
+                  alt="NSDC Logo"
+                  className="footer-rec-img"
+                  loading="lazy"
+                />
+                <span>NSDC</span>
               </div>
             </div>
           </div>
