@@ -47,19 +47,40 @@ export const T = {
     explore: 'Explore Courses',
     talk: 'Talk to Us',
     loc: 'Near Railway Crossing, New Colony, Pachore, MP',
-    admissionsOpen: 'Admissions Open',
+    admissionsOpen: 'Enquiries Welcome',
     heroStats: [
       { label: 'Educational Legacy', val: 'Since 2016' },
       { label: 'Programs Offered', val: '9 Courses' },
       { label: 'Campus Location', val: 'Pachore, MP' }
     ],
-    heroIllustration: {
-      tag: 'Abhi Learning Hub',
-      title: 'Digital Literacy & Academic Guidance',
-      chip1: 'Computer Diploma',
-      chip2: 'CPCT Practice',
-      chip3: 'University Guidance',
-      status: 'Admissions Open 2025–26'
+    heroDashboard: {
+      title: 'Explore Your Learning Journey',
+      status: 'Enquiries Welcome',
+      badge1: {
+        title: 'Practical Learning',
+        subtitle: 'Hands-on Computer Training'
+      },
+      badge2: {
+        title: 'Personal Academic Guidance',
+        subtitle: 'Degree Counseling in Pachore'
+      },
+      categories: {
+        computer: {
+          title: 'Computer Education',
+          desc: 'Diploma & creative design skills',
+          courses: ['DCA', 'PGDCA', 'Adobe Photoshop']
+        },
+        cpct: {
+          title: 'CPCT Preparation',
+          desc: 'Typing speed & computer proficiency',
+          skills: ['Hindi Typing', 'English Typing', 'Computer Proficiency Preparation']
+        },
+        academic: {
+          title: 'Academic Programs',
+          desc: 'Undergraduate & postgraduate degree counseling',
+          courses: ['BA', 'BSc', 'BCom', 'MA', 'MCom']
+        }
+      }
     },
     aT: 'Rooted in Pachore. Focused on Your Future.',
     aP: 'Abhi Computer Center has been dedicated to providing quality computer education and higher academic study guidance to learners in Pachore since 2016. We believe in practical, transparent learning that enables students to gain digital proficiency and take confident steps toward their educational goals.',
@@ -233,19 +254,40 @@ export const T = {
     explore: 'कोर्स देखें',
     talk: 'हमसे बात करें',
     loc: 'रेलवे क्रॉसिंग के पास, न्यू कॉलोनी, पचोर (म.प्र.)',
-    admissionsOpen: 'प्रवेश प्रारंभ',
+    admissionsOpen: 'पूछताछ का स्वागत है',
     heroStats: [
       { label: 'शैक्षणिक अनुभव', val: '2016 से' },
       { label: 'उपलब्ध पाठ्यक्रम', val: '9 कोर्स' },
       { label: 'संस्थान स्थान', val: 'पचोर (म.प्र.)' }
     ],
-    heroIllustration: {
-      tag: 'अभि लर्निंग सेंटर',
-      title: 'डिजिटल शिक्षा एवं शैक्षणिक मार्गदर्शन',
-      chip1: 'कंप्यूटर डिप्लोमा',
-      chip2: 'CPCT टाइपिंग अभ्यास',
-      chip3: 'विश्वविद्यालय मार्गदर्शन',
-      status: 'प्रवेश सत्र 2025–26'
+    heroDashboard: {
+      title: 'अपनी सीखने की यात्रा जानें',
+      status: 'पूछताछ का स्वागत है',
+      badge1: {
+        title: 'व्यावहारिक शिक्षा',
+        subtitle: 'हैंड्स-ऑन कंप्यूटर प्रशिक्षण'
+      },
+      badge2: {
+        title: 'व्यक्तिगत शैक्षणिक मार्गदर्शन',
+        subtitle: 'पचोर में डिग्री परामर्श'
+      },
+      categories: {
+        computer: {
+          title: 'कंप्यूटर शिक्षा',
+          desc: 'डिप्लोमा एवं रचनात्मक डिज़ाइन कौशल',
+          courses: ['DCA', 'PGDCA', 'Adobe Photoshop']
+        },
+        cpct: {
+          title: 'CPCT तैयारी',
+          desc: 'टाइपिंग स्पीड एवं कंप्यूटर दक्षता',
+          skills: ['हिंदी टाइपिंग', 'अंग्रेजी टाइपिंग', 'कंप्यूटर दक्षता तैयारी']
+        },
+        academic: {
+          title: 'शैक्षणिक पाठ्यक्रम',
+          desc: 'स्नातक एवं स्नातकोत्तर डिग्री परामर्श',
+          courses: ['BA', 'BSc', 'BCom', 'MA', 'MCom']
+        }
+      }
     },
     aT: 'पचोर में जड़ें। आपके भविष्य पर ध्यान।',
     aP: 'अभि कंप्यूटर सेंटर 2016 से पचोर के विद्यार्थियों को गुणवत्तापूर्ण कंप्यूटर शिक्षा और उच्च शैक्षणिक अध्ययन का मार्गदर्शन प्रदान कर रहा है। हमारा उद्देश्य विद्यार्थियों को व्यावहारिक डिजिटल कौशल में दक्ष बनाना और उच्च शिक्षा में सही दिशा देना है ताकि वे अपने लक्ष्यों की ओर आत्मविश्वास से आगे बढ़ सकें।',

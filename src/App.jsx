@@ -32,7 +32,6 @@ import {
   AlertCircle,
   Calendar,
   Building2,
-  Terminal,
   Users
 } from 'lucide-react';
 import { T, COURSES, NAMES, COURSE_FULL_NAMES } from './i18n.js';
@@ -492,119 +491,109 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Side: Educational & Computer Learning Showcase */}
-            <div className="hero-visual-wrapper rv" aria-label="Digital learning environment preview">
-              {/* Top Floating Badge */}
+            {/* Right Side: Educational Programs & Guidance Dashboard */}
+            <div className="hero-visual-wrapper rv" aria-label="Educational programs and study guidance dashboard">
+              {/* Top Floating Badge: Practical Learning */}
               <div className="hero-floating-badge badge-top">
                 <div className="badge-ico-wrap blue">
                   <Monitor size={18} />
                 </div>
                 <div className="badge-text-group">
-                  <strong>Practical Computer Lab</strong>
-                  <small>Hands-on Training</small>
+                  <strong>{t.heroDashboard.badge1.title}</strong>
+                  <small>{t.heroDashboard.badge1.subtitle}</small>
                 </div>
               </div>
 
-              {/* Main Learning Terminal Card */}
-              <div className="learning-terminal-card">
-                {/* Window top bar */}
-                <div className="terminal-topbar">
-                  <div className="terminal-dots" aria-hidden="true">
-                    <span className="dot red" />
-                    <span className="dot yellow" />
-                    <span className="dot green" />
+              {/* Central Educational Dashboard Card */}
+              <div className="learning-journey-dashboard" aria-label="Educational Journey Dashboard">
+                {/* Dashboard Header Bar */}
+                <div className="dashboard-header">
+                  <div className="dashboard-header-left">
+                    <div className="dashboard-header-icon" aria-hidden="true">
+                      <BookOpen size={18} />
+                    </div>
+                    <div className="dashboard-title-wrap">
+                      <h3 className="dashboard-heading">{t.heroDashboard.title}</h3>
+                      <span className="dashboard-sub">{t.instituteName} · {t.tagline}</span>
+                    </div>
                   </div>
-                  <div className="terminal-title">
-                    <Terminal size={14} />
-                    <span>abhi-learning-hub ~ pachore</span>
+                  <div className="dashboard-status-tag">
+                    <span className="status-indicator-dot" />
+                    <span>{t.heroDashboard.status}</span>
                   </div>
-                  <div className="terminal-badge">{t.heroIllustration.status}</div>
                 </div>
 
-                {/* Simulated interactive display */}
-                <div className="terminal-body">
-                  <div className="terminal-code-block">
-                    <div className="code-header-line">
-                      <span className="code-comment">// Abhi Computer Center • Est. 2016</span>
-                      <span className="code-file-tag">curriculum.js</span>
-                    </div>
-                    <p className="code-line">
-                      <span className="code-keyword">const</span> institute ={' '}
-                      <span className="code-string">"Abhi Computer Center"</span>;
-                    </p>
-                    <p className="code-line">
-                      <span className="code-keyword">const</span> programs = [
-                    </p>
-                    <div className="code-indent">
-                      <span className="code-val">"DCA"</span>,{' '}
-                      <span className="code-val">"PGDCA"</span>,{' '}
-                      <span className="code-val">"CPCT"</span>,{' '}
-                      <span className="code-val">"Photoshop"</span>,
-                      <br />
-                      <span className="code-val">"BA"</span>,{' '}
-                      <span className="code-val">"BSc"</span>,{' '}
-                      <span className="code-val">"BCom"</span>,{' '}
-                      <span className="code-val">"MA"</span>,{' '}
-                      <span className="code-val">"MCom"</span>
-                    </div>
-                    <p className="code-line">];</p>
-                    <p className="code-line">
-                      <span className="code-func">enrollStudent</span>
-                      ({'{'} guidance:{' '}
-                      <span className="code-string">"Practical & Transparent"</span> {'}'});
-                    </p>
-                  </div>
-
-                  {/* Highlights Grid inside terminal */}
-                  <div className="terminal-features-grid">
-                    <div className="term-feature">
-                      <div className="term-feat-icon">
+                {/* Dashboard Categories Grid */}
+                <div className="dashboard-categories-container">
+                  {/* Category 1: Computer Education */}
+                  <div className="dash-cat-card cat-computer">
+                    <div className="dash-cat-header">
+                      <div className="dash-cat-icon computer" aria-hidden="true">
                         <Monitor size={18} />
                       </div>
-                      <div className="term-feat-info">
-                        <strong>DCA & PGDCA</strong>
-                        <span>Diploma Training</span>
+                      <div className="dash-cat-meta">
+                        <h4 className="dash-cat-title">{t.heroDashboard.categories.computer.title}</h4>
+                        <p className="dash-cat-desc">{t.heroDashboard.categories.computer.desc}</p>
                       </div>
                     </div>
-                    <div className="term-feature">
-                      <div className="term-feat-icon">
+                    <div className="dash-course-pills">
+                      <span className="dash-pill">DCA</span>
+                      <span className="dash-pill">PGDCA</span>
+                      <span className="dash-pill">Adobe Photoshop</span>
+                    </div>
+                  </div>
+
+                  {/* Category 2: CPCT Preparation */}
+                  <div className="dash-cat-card cat-cpct">
+                    <div className="dash-cat-header">
+                      <div className="dash-cat-icon cpct" aria-hidden="true">
                         <Keyboard size={18} />
                       </div>
-                      <div className="term-feat-info">
-                        <strong>CPCT Typing</strong>
-                        <span>Hindi & English</span>
+                      <div className="dash-cat-meta">
+                        <div className="dash-cat-title-row">
+                          <h4 className="dash-cat-title">{t.heroDashboard.categories.cpct.title}</h4>
+                          <span className="dash-code-tag">CPCT</span>
+                        </div>
+                        <p className="dash-cat-desc">{t.heroDashboard.categories.cpct.desc}</p>
                       </div>
                     </div>
-                    <div className="term-feature">
-                      <div className="term-feat-icon">
+                    <div className="dash-course-pills">
+                      {t.heroDashboard.categories.cpct.skills.map((skill, idx) => (
+                        <span key={idx} className="dash-pill skill">{skill}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Category 3: Academic Programs */}
+                  <div className="dash-cat-card cat-academic">
+                    <div className="dash-cat-header">
+                      <div className="dash-cat-icon academic" aria-hidden="true">
                         <GraduationCap size={18} />
                       </div>
-                      <div className="term-feat-info">
-                        <strong>Degree Options</strong>
-                        <span>BA · BSc · BCom</span>
+                      <div className="dash-cat-meta">
+                        <h4 className="dash-cat-title">{t.heroDashboard.categories.academic.title}</h4>
+                        <p className="dash-cat-desc">{t.heroDashboard.categories.academic.desc}</p>
                       </div>
                     </div>
-                    <div className="term-feature">
-                      <div className="term-feat-icon">
-                        <Palette size={18} />
-                      </div>
-                      <div className="term-feat-info">
-                        <strong>Photoshop</strong>
-                        <span>Graphic Design</span>
-                      </div>
+                    <div className="dash-course-pills academic-pills">
+                      <span className="dash-pill">BA</span>
+                      <span className="dash-pill">BSc</span>
+                      <span className="dash-pill">BCom</span>
+                      <span className="dash-pill">MA</span>
+                      <span className="dash-pill">MCom</span>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Bottom Floating Badge */}
+              {/* Bottom Floating Badge: Personal Academic Guidance */}
               <div className="hero-floating-badge badge-bottom">
                 <div className="badge-ico-wrap cyan">
-                  <ShieldCheck size={18} />
+                  <GraduationCap size={18} />
                 </div>
                 <div className="badge-text-group">
-                  <strong>Authentic Student Guidance</strong>
-                  <small>Pachore, Madhya Pradesh</small>
+                  <strong>{t.heroDashboard.badge2.title}</strong>
+                  <small>{t.heroDashboard.badge2.subtitle}</small>
                 </div>
               </div>
             </div>
