@@ -494,10 +494,22 @@ export default function App() {
 
             {/* Right Side: Educational & Computer Learning Showcase */}
             <div className="hero-visual-wrapper rv" aria-label="Digital learning environment preview">
+              {/* Top Floating Badge */}
+              <div className="hero-floating-badge badge-top">
+                <div className="badge-ico-wrap blue">
+                  <Monitor size={18} />
+                </div>
+                <div className="badge-text-group">
+                  <strong>Practical Computer Lab</strong>
+                  <small>Hands-on Training</small>
+                </div>
+              </div>
+
+              {/* Main Learning Terminal Card */}
               <div className="learning-terminal-card">
                 {/* Window top bar */}
                 <div className="terminal-topbar">
-                  <div className="terminal-dots">
+                  <div className="terminal-dots" aria-hidden="true">
                     <span className="dot red" />
                     <span className="dot yellow" />
                     <span className="dot green" />
@@ -512,7 +524,10 @@ export default function App() {
                 {/* Simulated interactive display */}
                 <div className="terminal-body">
                   <div className="terminal-code-block">
-                    <span className="code-comment">// Abhi Computer Center • Est. 2016</span>
+                    <div className="code-header-line">
+                      <span className="code-comment">// Abhi Computer Center • Est. 2016</span>
+                      <span className="code-file-tag">curriculum.js</span>
+                    </div>
                     <p className="code-line">
                       <span className="code-keyword">const</span> institute ={' '}
                       <span className="code-string">"Abhi Computer Center"</span>;
@@ -580,22 +595,16 @@ export default function App() {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* Floating Badges */}
-                <div className="hero-floating-badge badge-top">
-                  <Monitor size={18} className="badge-ico blue" />
-                  <div>
-                    <strong>Practical Computer Lab</strong>
-                    <small>Hands-on Training</small>
-                  </div>
+              {/* Bottom Floating Badge */}
+              <div className="hero-floating-badge badge-bottom">
+                <div className="badge-ico-wrap cyan">
+                  <ShieldCheck size={18} />
                 </div>
-
-                <div className="hero-floating-badge badge-bottom">
-                  <ShieldCheck size={18} className="badge-ico cyan" />
-                  <div>
-                    <strong>Authentic Student Guidance</strong>
-                    <small>Pachore, Madhya Pradesh</small>
-                  </div>
+                <div className="badge-text-group">
+                  <strong>Authentic Student Guidance</strong>
+                  <small>Pachore, Madhya Pradesh</small>
                 </div>
               </div>
             </div>
