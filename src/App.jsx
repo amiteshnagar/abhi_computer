@@ -1,82 +1,1362 @@
-import {useState,useEffect,useRef} from 'react'
-import * as L from 'lucide-react'
-import {T,COURSES,NAMES} from './i18n.js'
-const PHONE='917000636271',MAIL='abhicomputer312377@gmail.com'
-const MAP='https://www.google.com/maps/search/?api=1&query=Abhi%20Computer%20Center%2C%20Near%20Railway%20Crossing%2C%20New%20Colony%2C%20Pachore%2C%20Madhya%20Pradesh%2C%20India'
-const IDS=["home","about","courses","contact"]
-const Logo=()=><svg width="34" height="34" viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="16" fill="#315CFF"/><path d="M18 46 32 16l14 30M24 37h16" fill="none" stroke="#fff" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="46" cy="18" r="5" fill="#54D7F2"/></svg>
-function useReveal(){const r=useRef();useEffect(()=>{const o=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('in');o.unobserve(x.target)}}),{threshold:.15});r.current.querySelectorAll('.rv').forEach(n=>o.observe(n));return()=>o.disconnect()},[]);return r}
-export default function App(){
-const [lang,setLang]=useState('en'),t=T[lang]
-const [open,setOpen]=useState(false),[scrolled,setScrolled]=useState(false),[active,setActive]=useState('home')
-const [filter,setFilter]=useState('all'),[pick,setPick]=useState(null)
-const [f,setF]=useState({name:'',mob:'',course:'',msg:'',ok:false}),[err,setErr]=useState({}),[sent,setSent]=useState(null)
-const root=useReveal()
-useEffect(()=>{document.documentElement.lang=lang==='hi'?'hi':'en'},[lang])
-useEffect(()=>{const s=()=>setScrolled(scrollY>20);s();addEventListener('scroll',s,{passive:true});
-const o=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&setActive(x.target.id)),{rootMargin:'-40% 0px -55% 0px'});IDS.forEach(i=>o.observe(document.getElementById(i)));
-return()=>{removeEventListener('scroll',s);o.disconnect()}},[])
-useEffect(()=>{const k=e=>e.key==='Escape'&&setOpen(false);addEventListener('keydown',k);return()=>removeEventListener('keydown',k)},[])
-const go=id=>{setOpen(false);document.getElementById(id)?.scrollIntoView({behavior:'smooth'})}
-const enquire=c=>{setF(p=>({...p,course:c}));go('enquire')}
-const shown=COURSES.filter(c=>filter==='all'||c[1]===filter)
-const xOpts=[['computer',COURSES.filter(c=>c[1]==='computer'&&c[0]!=='cpct').map(c=>c[0])],['typing',['cpct']],['academic',COURSES.filter(c=>c[1]==='academic').map(c=>c[0])]]
-const mobOk=v=>/^(?:\+91|91|0)?[6-9]\d{9}$/.test(v.replace(/[\s-]/g,''))
-const buildUrl=()=>{const m=f.mob.replace(/[\s-]/g,'').slice(-10);let s=`${t.msgHead}\n\nName: ${f.name.trim()}\nMobile: ${m}\nCourse: ${NAMES[f.course]}\n`;if(f.msg.trim())s+=`Message: ${f.msg.trim()}\n`;s+=`\n${t.msgTail}`;return`https://wa.me/${PHONE}?text=${encodeURIComponent(s)}`}
-const submit=e=>{e.preventDefault();const x={};if(!f.name.trim())x.name=t.eName;if(!mobOk(f.mob))x.mob=t.eMob;if(!f.course)x.course=t.eCourse;if(!f.ok)x.ok=t.eConsent;setErr(x);if(Object.keys(x).length){document.getElementById('f-'+Object.keys(x)[0])?.focus();return}
-const u=buildUrl();setSent(u);window.open(u,'_blank','noopener')}
-const Ic=({n,...p})=>{const C=L[n]||L.Circle;return<C {...p}/>}
-return(<div ref={root}>
-<header className={'nav'+(scrolled?' sc':'')}><a href="#home" className="brand" onClick={e=>{e.preventDefault();go('home')}}><Logo/><span>Abhi Computer Center</span></a>
-<nav className={'links'+(open?' open':'')} aria-label="Main">{IDS.map((id,i)=><a key={id} href={'#'+id} className={active===id?'act':''} aria-current={active===id?'true':undefined} onClick={e=>{e.preventDefault();go(id)}}>{t.nav[i]}</a>)}</nav>
-<div className="navr"><button className="lang" onClick={()=>setLang(lang==='en'?'hi':'en')} aria-label="Language"><L.Languages size={16}/>{lang==='en'?'हिंदी':'EN'}</button>
-<button className="btn sm" onClick={()=>go('enquire')}>{t.enq}</button>
-<button className="burger" aria-expanded={open} aria-label={t.menu} onClick={()=>setOpen(!open)}>{open?<L.X/>:<L.Menu/>}</button></div></header>
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  Monitor,
+  Laptop,
+  Keyboard,
+  Palette,
+  GraduationCap,
+  FlaskConical,
+  Calculator,
+  BookOpen,
+  Briefcase,
+  Phone,
+  Mail,
+  MessageCircle,
+  MapPin,
+  Menu,
+  X,
+  ArrowUpRight,
+  ArrowRight,
+  Languages,
+  Check,
+  ChevronDown,
+  Award,
+  Compass,
+  ShieldCheck,
+  Clock,
+  Sparkles,
+  ExternalLink,
+  HelpCircle,
+  Send,
+  CheckCircle2,
+  AlertCircle,
+  Calendar,
+  Building2,
+  Terminal,
+  Users
+} from 'lucide-react';
+import { T, COURSES, NAMES, COURSE_FULL_NAMES } from './i18n.js';
 
-<section id="home" className="hero dark"><div className="grid"/><div className="hl">
-<p className="eyebrow h1a">{t.eyebrow}</p>
-<h1><span className="ln l1">{t.h1[0]}</span><span className="ln l2">{t.h1[1]}</span><span className="ln l3"><em>{t.h1[2]}</em></span></h1>
-<p className="lead h2a">{t.heroP}</p>
-<div className="ctas h3a"><button className="btn" onClick={()=>go('courses')}>{t.explore}</button><button className="btn ghost" onClick={()=>go('contact')}>{t.talk}</button></div>
-<p className="loc h3a"><L.MapPin size={16}/>{t.loc}</p></div>
-<div className="hv" aria-hidden="true"><div className="panel"><div className="orb"/><div className="screen"><i/><i/><i/><b/><b/><b/></div></div>
-<div className="fl a"><L.Monitor size={18}/>{t.f1}</div><div className="fl b"><L.GraduationCap size={18}/>{t.f2}</div>
-<div className="fl c"><span>{t.f3}</span>{['DCA','CPCT','BA'].map(x=><u key={x}>{x}</u>)}</div></div></section>
+const PHONE = '917000636271';
+const DISPLAY_PHONE = '+91 7000636271';
+const MAIL = 'abhicomputer312377@gmail.com';
+const MAP =
+  'https://www.google.com/maps/search/?api=1&query=Abhi%20Computer%20Center%2C%20Near%20Railway%20Crossing%2C%20New%20Colony%2C%20Pachore%2C%20Madhya%20Pradesh%2C%20India';
 
-<section id="about" className="about"><div className="wrap two"><div className="rv"><h2>{t.aT}</h2><p className="big">{t.aP}</p></div>
-<div className="rv aside"><b>{t.dir}</b><span>{t.dirN}</span><small>{t.loc}</small></div></div></section>
+const ICONS = {
+  Monitor,
+  Laptop,
+  Keyboard,
+  Palette,
+  GraduationCap,
+  FlaskConical,
+  Calculator,
+  BookOpen,
+  Briefcase,
+  Compass,
+  ShieldCheck,
+  Award,
+  Clock,
+  Users,
+  Building2,
+  Calendar
+};
 
-<section id="journey" className="journey dark"><div className="wrap"><h2 className="rv">{t.jT}</h2><ol className="jt">{t.tl.map(([d,x],i)=><li key={i} className={'rv jt'+i}><b>{d}</b><p>{x}</p></li>)}</ol></div></section>
+const Logo = () => (
+  <div className="brand-logo" aria-hidden="true">
+    <svg width="40" height="40" viewBox="0 0 64 64" fill="none">
+      <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="#315BFF" />
+          <stop offset="100%" stopColor="#42D9F5" />
+        </linearGradient>
+      </defs>
+      <rect width="64" height="64" rx="16" fill="#0B1020" stroke="rgba(66, 217, 245, 0.3)" strokeWidth="2" />
+      <path
+        d="M18 46 L32 16 L46 46"
+        stroke="url(#logoGrad)"
+        strokeWidth="5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <path d="M23 37 H41" stroke="#FFFFFF" strokeWidth="4" strokeLinecap="round" />
+      <circle cx="48" cy="18" r="4.5" fill="#42D9F5" />
+    </svg>
+  </div>
+);
 
-<section id="courses" className="courses"><div className="wrap"><div className="rv"><h2>{t.cT}</h2><p className="sub">{t.cP}</p>
-<div className="tabs" role="tablist">{['all','computer','academic'].map(k=><button key={k} role="tab" aria-selected={filter===k} className={filter===k?'on':''} onClick={()=>setFilter(k)}>{t.tabs[k]}</button>)}</div></div>
-<ul className="cg" key={filter}>{shown.map(([id,g,ic],i)=><li key={id} className={'cc '+g+(i===0&&filter!=='academic'?' feat':'')} style={{animationDelay:i*45+'ms'}}>
-<span className="ci"><Ic n={ic} size={26}/></span><h3>{NAMES[id]}</h3><p>{t.cd[id]}</p>
-<button className="ask" onClick={()=>enquire(id)}>{t.ask}<L.ArrowUpRight size={18}/></button></li>)}</ul></div></section>
+function useScrollReveal() {
+  const ref = useRef(null);
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    // Fallback if IntersectionObserver is not supported
+    if (!('IntersectionObserver' in window)) {
+      if (ref.current) {
+        ref.current.querySelectorAll('.rv').forEach((el) => el.classList.add('in'));
+      }
+      return;
+    }
 
-<section className="why dark"><div className="wrap"><h2 className="rv">{t.wT}</h2><div className="rows">{t.w.map(([h,p],i)=><div key={i} className="row rv" style={{transitionDelay:i*80+'ms'}}><L.Compass className="ri" size={22} style={{display:'none'}}/><span className="rn"><Ic n={['Compass','Laptop','GraduationCap','MessageCircle'][i]} size={28}/></span><h3>{h}</h3><p>{p}</p></div>)}</div></div></section>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
 
-<section className="explorer"><div className="wrap xw"><h2 className="rv">{t.xT}</h2>
-<div className="xo" role="radiogroup" aria-label={t.xT}>{t.x.map((l,i)=><button key={i} role="radio" aria-checked={pick===i} className={pick===i?'on':''} onClick={()=>setPick(i)}>{l}</button>)}</div>
-{pick!==null&&<div className="xr" key={pick} aria-live="polite"><div className="chips">{xOpts[pick][1].map(id=><span key={id}>{NAMES[id]}</span>)}</div>{pick===1&&<p className="note">{t.xNote}</p>}
-<button className="btn" onClick={()=>enquire(xOpts[pick][1][0])}>{t.ask}</button></div>}</div></section>
+    if (ref.current) {
+      const items = ref.current.querySelectorAll('.rv');
+      items.forEach((item) => observer.observe(item));
+    }
 
-<section id="enquire" className="enq dark"><div className="wrap two"><div className="rv"><h2>{t.fT}</h2><p className="sub">{t.fP}</p></div>
-<form onSubmit={submit} noValidate className="rv">
-<label htmlFor="f-name">{t.name}</label><input id="f-name" autoComplete="name" value={f.name} aria-invalid={!!err.name} onChange={e=>setF({...f,name:e.target.value})}/>{err.name&&<small role="alert">{err.name}</small>}
-<label htmlFor="f-mob">{t.mob}</label><input id="f-mob" type="tel" inputMode="tel" autoComplete="tel" value={f.mob} aria-invalid={!!err.mob} onChange={e=>setF({...f,mob:e.target.value})}/>{err.mob&&<small role="alert">{err.mob}</small>}
-<label htmlFor="f-course">{t.course}</label><select id="f-course" value={f.course} aria-invalid={!!err.course} onChange={e=>setF({...f,course:e.target.value})}><option value="">{t.pick}</option>{COURSES.map(c=><option key={c[0]} value={c[0]}>{NAMES[c[0]]}</option>)}</select>{err.course&&<small role="alert">{err.course}</small>}
-<label htmlFor="f-msg">{t.msg}</label><textarea id="f-msg" rows="3" value={f.msg} onChange={e=>setF({...f,msg:e.target.value})}/>
-<label className="chk"><input id="f-ok" type="checkbox" checked={f.ok} onChange={e=>setF({...f,ok:e.target.checked})}/>{t.consent}</label>{err.ok&&<small role="alert">{err.ok}</small>}
-<button className="btn" type="submit">{t.send}</button>
-{sent&&<p className="okm" role="status">{t.ok} <a href={sent} target="_blank" rel="noopener noreferrer">{t.fb}</a></p>}</form></div></section>
+    return () => observer.disconnect();
+  }, []);
+  return ref;
+}
 
-<section id="contact" className="contact"><div className="wrap"><div className="cta rv"><h2>{t.cT2}</h2>
-<address><b>Abhi Computer Center</b><span>{t.dir}: {t.dirN}</span><span>{t.addr}</span><span>+91 7000636271</span><span>{MAIL}</span></address>
-<div className="ctas"><a className="btn" href="tel:+917000636271"><L.Phone size={16}/>{t.call}</a><a className="btn ghost" href={'mailto:'+MAIL}><L.Mail size={16}/>{t.email}</a><a className="btn ghost" href={'https://wa.me/'+PHONE} target="_blank" rel="noopener noreferrer"><L.MessageCircle size={16}/>{t.wa}</a><a className="btn ghost" href={MAP} target="_blank" rel="noopener noreferrer"><L.MapPin size={16}/>{t.map}</a></div></div></div></section>
+export default function App() {
+  const [lang, setLang] = useState('en');
+  const t = T[lang];
 
-<footer className="foot dark"><div className="wrap fw"><div><div className="brand"><Logo/><span>Abhi Computer Center</span></div><p>{t.fd}</p></div>
-<div className="fl2">{IDS.map((id,i)=><a key={id} href={'#'+id} onClick={e=>{e.preventDefault();go(id)}}>{t.nav[i]}</a>)}</div>
-<div className="fl2">{['dca','pgdca','cpct','photoshop'].map(id=><a key={id} href="#enquire" onClick={e=>{e.preventDefault();enquire(id)}}>{NAMES[id]}</a>)}</div>
-<div className="fl2"><a href="tel:+917000636271">+91 7000636271</a><a href={'mailto:'+MAIL}>{MAIL}</a><a href={'https://wa.me/'+PHONE} target="_blank" rel="noopener noreferrer">WhatsApp</a><span>{t.addr}</span></div></div>
-<p className="copy">© {new Date().getFullYear()} Abhi Computer Center</p></footer></div>)}
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeNav, setActiveNav] = useState('home');
+
+  // Course filter and explorer state
+  const [courseFilter, setCourseFilter] = useState('all');
+  const [explorerCategory, setExplorerCategory] = useState(0);
+
+  // FAQ accordion state
+  const [openFaq, setOpenFaq] = useState(0);
+
+  // Enquiry form state
+  const [formData, setFormData] = useState({
+    name: '',
+    mob: '',
+    course: '',
+    msg: '',
+    consent: false
+  });
+  const [formErrors, setFormErrors] = useState({});
+  const [submittedUrl, setSubmittedUrl] = useState(null);
+
+  const containerRef = useScrollReveal();
+
+  // Sync document lang attribute
+  useEffect(() => {
+    document.documentElement.lang = lang === 'hi' ? 'hi' : 'en';
+  }, [lang]);
+
+  // Navbar scroll detection & active link observation
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 24);
+    };
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    const navSectionIds = ['home', 'about', 'courses', 'explorer', 'why', 'faq', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveNav(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-25% 0px -60% 0px' }
+    );
+
+    navSectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+
+  // Keyboard accessibility: Close mobile drawer on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape' && menuOpen) {
+        setMenuOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [menuOpen]);
+
+  // Smooth scroll handler
+  const scrollTo = useCallback((id) => {
+    setMenuOpen(false);
+    const target = document.getElementById(id);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, []);
+
+  // Pre-select course and scroll to enquiry form
+  const handleEnquireCourse = useCallback(
+    (courseId) => {
+      setFormData((prev) => ({ ...prev, course: courseId }));
+      scrollTo('enquire');
+      // Focus name or course input after scrolling
+      setTimeout(() => {
+        const input = document.getElementById('f-name');
+        if (input) input.focus();
+      }, 500);
+    },
+    [scrollTo]
+  );
+
+  // Explorer categories data
+  const explorerOptions = [
+    {
+      cat: 'computer',
+      courses: ['dca', 'pgdca', 'photoshop']
+    },
+    {
+      cat: 'typing',
+      courses: ['cpct']
+    },
+    {
+      cat: 'academic',
+      courses: ['ba', 'bsc', 'bcom', 'ma', 'mcom']
+    }
+  ];
+
+  // Mobile number validation (Indian 10-digit)
+  const validateMobile = (value) => {
+    const cleaned = value.replace(/[\s-]/g, '');
+    return /^(?:\+91|91|0)?[6-9]\d{9}$/.test(cleaned);
+  };
+
+  // WhatsApp Enquiry URL generator
+  const generateWhatsAppUrl = () => {
+    const cleanMob = formData.mob.replace(/[\s-]/g, '').slice(-10);
+    const selectedCourseName = NAMES[formData.course] || formData.course;
+    const fullCourseName = COURSE_FULL_NAMES[formData.course] || selectedCourseName;
+
+    let message = `${t.msgHead}\n\n`;
+    message += `• Student Name: ${formData.name.trim()}\n`;
+    message += `• Mobile Number: ${cleanMob}\n`;
+    message += `• Interested Program: ${fullCourseName} (${selectedCourseName})\n`;
+    if (formData.msg.trim()) {
+      message += `• Message / Query: ${formData.msg.trim()}\n`;
+    }
+    message += `\n${t.msgTail}`;
+
+    return `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+  };
+
+  // Handle Form Submission
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+
+    if (!formData.name.trim()) {
+      errors.name = t.eName;
+    }
+    if (!validateMobile(formData.mob)) {
+      errors.mob = t.eMob;
+    }
+    if (!formData.course) {
+      errors.course = t.eCourse;
+    }
+    if (!formData.consent) {
+      errors.consent = t.eConsent;
+    }
+
+    setFormErrors(errors);
+
+    if (Object.keys(errors).length > 0) {
+      const firstErrorField = Object.keys(errors)[0];
+      const el = document.getElementById(`f-${firstErrorField}`);
+      if (el) el.focus();
+      return;
+    }
+
+    const whatsappUrl = generateWhatsAppUrl();
+    setSubmittedUrl(whatsappUrl);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  // Render Lucide Icon dynamically
+  const RenderIcon = ({ name, size = 24, className = '' }) => {
+    const IconComponent = ICONS[name] || Compass;
+    return <IconComponent size={size} className={className} aria-hidden="true" />;
+  };
+
+  // Filter courses for courses section
+  const visibleCourses = COURSES.filter((c) => {
+    if (courseFilter === 'all') return true;
+    return c[1] === courseFilter;
+  });
+
+  return (
+    <div className={`app-root ${lang === 'hi' ? 'lang-hi' : 'lang-en'}`} ref={containerRef}>
+      {/* ========================================================
+          1. HEADER & STICKY NAVIGATION
+      ======================================================== */}
+      <header className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="navbar-container wrap">
+          <a
+            href="#home"
+            className="navbar-brand"
+            onClick={(e) => {
+              e.preventDefault();
+              scrollTo('home');
+            }}
+          >
+            <Logo />
+            <div className="brand-text">
+              <span className="brand-title">{t.instituteName}</span>
+              <span className="brand-tagline">{t.tagline}</span>
+            </div>
+          </a>
+
+          {/* Desktop Navigation */}
+          <nav className="desktop-nav" aria-label="Main Navigation">
+            {t.navIds.map((id, index) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`nav-link ${activeNav === id ? 'active' : ''}`}
+                aria-current={activeNav === id ? 'true' : undefined}
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollTo(id);
+                }}
+              >
+                {t.nav[index]}
+              </a>
+            ))}
+          </nav>
+
+          {/* Nav Right: Language Switch & CTA & Burger */}
+          <div className="navbar-actions">
+            <button
+              type="button"
+              className="lang-toggle-btn"
+              onClick={() => setLang(lang === 'en' ? 'hi' : 'en')}
+              aria-label={`Switch language to ${lang === 'en' ? 'Hindi' : 'English'}`}
+            >
+              <Languages size={17} />
+              <span>{lang === 'en' ? 'हिंदी' : 'English'}</span>
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-primary nav-enquire-btn"
+              onClick={() => scrollTo('enquire')}
+            >
+              <span>{t.enq}</span>
+              <ArrowUpRight size={17} />
+            </button>
+
+            <button
+              type="button"
+              className="mobile-burger-btn"
+              aria-expanded={menuOpen}
+              aria-label={menuOpen ? t.closeMenu : t.menu}
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              {menuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Slide-Down Drawer */}
+        <div className={`mobile-nav-drawer ${menuOpen ? 'open' : ''}`}>
+          <div className="mobile-nav-inner wrap">
+            <div className="mobile-nav-links">
+              {t.navIds.map((id, index) => (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  className={`mobile-nav-link ${activeNav === id ? 'active' : ''}`}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollTo(id);
+                  }}
+                >
+                  <span>{t.nav[index]}</span>
+                  <ArrowRight size={18} />
+                </a>
+              ))}
+            </div>
+
+            <div className="mobile-drawer-footer">
+              <button
+                type="button"
+                className="btn btn-primary btn-block"
+                onClick={() => scrollTo('enquire')}
+              >
+                <span>{t.enq}</span>
+                <ArrowUpRight size={18} />
+              </button>
+
+              <div className="mobile-contact-quick">
+                <a href={`tel:${PHONE}`} className="mobile-quick-link">
+                  <Phone size={16} />
+                  <span>{DISPLAY_PHONE}</span>
+                </a>
+                <a
+                  href={`https://wa.me/${PHONE}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mobile-quick-link"
+                >
+                  <MessageCircle size={16} />
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        {/* ========================================================
+            2. HERO SECTION
+        ======================================================== */}
+        <section id="home" className="hero-section dark-section">
+          <div className="hero-grid-bg" aria-hidden="true" />
+          <div className="hero-glow-blob hero-glow-1" aria-hidden="true" />
+          <div className="hero-glow-blob hero-glow-2" aria-hidden="true" />
+
+          <div className="wrap hero-layout">
+            {/* Left Content */}
+            <div className="hero-content">
+              <div className="hero-badge rv">
+                <span className="badge-pulse-dot" />
+                <Sparkles size={15} className="badge-icon" />
+                <span>{t.heroBadge}</span>
+              </div>
+
+              <h1 className="hero-title rv">
+                <span className="hero-line">{t.h1[0]}</span>
+                <span className="hero-line">{t.h1[1]}</span>
+                <span className="hero-line gradient-text">{t.h1[2]}</span>
+              </h1>
+
+              <p className="hero-lead rv">{t.heroP}</p>
+
+              <div className="hero-ctas rv">
+                <button
+                  type="button"
+                  className="btn btn-primary btn-lg"
+                  onClick={() => scrollTo('courses')}
+                >
+                  <span>{t.explore}</span>
+                  <ArrowRight size={18} />
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-outline-light btn-lg"
+                  onClick={() => scrollTo('contact')}
+                >
+                  <Phone size={18} />
+                  <span>{t.talk}</span>
+                </button>
+              </div>
+
+              <div className="hero-meta rv">
+                <div className="hero-meta-item">
+                  <MapPin size={17} className="meta-icon" />
+                  <span>{t.loc}</span>
+                </div>
+                <div className="hero-status-pill">
+                  <span className="status-dot" />
+                  <span>{t.admissionsOpen}</span>
+                </div>
+              </div>
+
+              {/* Quick stats counter */}
+              <div className="hero-stats-row rv">
+                {t.heroStats.map((stat, i) => (
+                  <div key={i} className="stat-card">
+                    <span className="stat-val">{stat.val}</span>
+                    <span className="stat-lbl">{stat.label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Side: Educational & Computer Learning Showcase */}
+            <div className="hero-visual-wrapper rv" aria-label="Digital learning environment preview">
+              <div className="learning-terminal-card">
+                {/* Window top bar */}
+                <div className="terminal-topbar">
+                  <div className="terminal-dots">
+                    <span className="dot red" />
+                    <span className="dot yellow" />
+                    <span className="dot green" />
+                  </div>
+                  <div className="terminal-title">
+                    <Terminal size={14} />
+                    <span>abhi-learning-hub ~ pachore</span>
+                  </div>
+                  <div className="terminal-badge">{t.heroIllustration.status}</div>
+                </div>
+
+                {/* Simulated interactive display */}
+                <div className="terminal-body">
+                  <div className="terminal-code-block">
+                    <span className="code-comment">// Abhi Computer Center • Est. 2016</span>
+                    <p className="code-line">
+                      <span className="code-keyword">const</span> institute ={' '}
+                      <span className="code-string">"Abhi Computer Center"</span>;
+                    </p>
+                    <p className="code-line">
+                      <span className="code-keyword">const</span> programs = [
+                    </p>
+                    <div className="code-indent">
+                      <span className="code-val">"DCA"</span>,{' '}
+                      <span className="code-val">"PGDCA"</span>,{' '}
+                      <span className="code-val">"CPCT"</span>,{' '}
+                      <span className="code-val">"Photoshop"</span>,
+                      <br />
+                      <span className="code-val">"BA"</span>,{' '}
+                      <span className="code-val">"BSc"</span>,{' '}
+                      <span className="code-val">"BCom"</span>,{' '}
+                      <span className="code-val">"MA"</span>,{' '}
+                      <span className="code-val">"MCom"</span>
+                    </div>
+                    <p className="code-line">];</p>
+                    <p className="code-line">
+                      <span className="code-func">enrollStudent</span>
+                      ({'{'} guidance:{' '}
+                      <span className="code-string">"Practical & Transparent"</span> {'}'});
+                    </p>
+                  </div>
+
+                  {/* Highlights Grid inside terminal */}
+                  <div className="terminal-features-grid">
+                    <div className="term-feature">
+                      <div className="term-feat-icon">
+                        <Monitor size={18} />
+                      </div>
+                      <div className="term-feat-info">
+                        <strong>DCA & PGDCA</strong>
+                        <span>Diploma Training</span>
+                      </div>
+                    </div>
+                    <div className="term-feature">
+                      <div className="term-feat-icon">
+                        <Keyboard size={18} />
+                      </div>
+                      <div className="term-feat-info">
+                        <strong>CPCT Typing</strong>
+                        <span>Hindi & English</span>
+                      </div>
+                    </div>
+                    <div className="term-feature">
+                      <div className="term-feat-icon">
+                        <GraduationCap size={18} />
+                      </div>
+                      <div className="term-feat-info">
+                        <strong>Degree Options</strong>
+                        <span>BA · BSc · BCom</span>
+                      </div>
+                    </div>
+                    <div className="term-feature">
+                      <div className="term-feat-icon">
+                        <Palette size={18} />
+                      </div>
+                      <div className="term-feat-info">
+                        <strong>Photoshop</strong>
+                        <span>Graphic Design</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Floating Badges */}
+                <div className="hero-floating-badge badge-top">
+                  <Monitor size={18} className="badge-ico blue" />
+                  <div>
+                    <strong>Practical Computer Lab</strong>
+                    <small>Hands-on Training</small>
+                  </div>
+                </div>
+
+                <div className="hero-floating-badge badge-bottom">
+                  <ShieldCheck size={18} className="badge-ico cyan" />
+                  <div>
+                    <strong>Authentic Student Guidance</strong>
+                    <small>Pachore, Madhya Pradesh</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            3. ABOUT SECTION
+        ======================================================== */}
+        <section id="about" className="about-section light-section">
+          <div className="wrap">
+            <div className="section-header-centered rv">
+              <span className="section-eyebrow">{t.tagline}</span>
+              <h2 className="section-title">{t.aT}</h2>
+              <p className="section-subtitle">{t.aP}</p>
+            </div>
+
+            {/* Core Pillars */}
+            <div className="about-pillars-grid">
+              {t.aboutPillars.map((pillar, i) => {
+                const iconNames = ['Monitor', 'Keyboard', 'GraduationCap', 'Users'];
+                return (
+                  <div key={i} className="pillar-card rv" style={{ transitionDelay: `${i * 90}ms` }}>
+                    <div className="pillar-icon-box">
+                      <RenderIcon name={iconNames[i]} size={24} />
+                    </div>
+                    <h3 className="pillar-title">{pillar.title}</h3>
+                    <p className="pillar-desc">{pillar.desc}</p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Director Information Card */}
+            <div className="leadership-highlight-card rv">
+              <div className="leadership-badge">
+                <Building2 size={20} />
+                <span>{t.tagline}</span>
+              </div>
+              <div className="leadership-content">
+                <div className="director-slot">
+                  <span className="director-role-label">{t.currentDirector}</span>
+                  <h4 className="director-name-val">{t.directorName}</h4>
+                  <p className="director-place">{t.loc}</p>
+                </div>
+                <div className="director-divider" />
+                <div className="director-slot">
+                  <span className="director-role-label">{t.founderDirector}</span>
+                  <h4 className="director-name-val founder">{t.founderName}</h4>
+                  <p className="director-place">{t.establishedYear}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            4. LEADERSHIP & JOURNEY TIMELINE
+        ======================================================== */}
+        <section id="journey" className="journey-section dark-section">
+          <div className="wrap">
+            <div className="section-header rv">
+              <span className="section-eyebrow cyan">{t.tagline}</span>
+              <h2 className="section-title text-white">{t.jT}</h2>
+              <p className="section-subtitle text-muted-light">{t.jSub}</p>
+            </div>
+
+            <div className="timeline-container rv">
+              <div className="timeline-track-line" aria-hidden="true" />
+              <div className="timeline-cards-grid">
+                {t.tl.map((step, i) => (
+                  <div key={i} className={`timeline-step-card step-${i} rv`}>
+                    <div className="step-node-indicator">
+                      <span className="node-dot" />
+                      <span className="node-glow" />
+                    </div>
+                    <div className="step-period-badge">
+                      <Calendar size={15} />
+                      <span>{step.period}</span>
+                    </div>
+                    <h3 className="step-role-title">{step.role}</h3>
+                    <p className="step-description">{step.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            5. COURSES SECTION (ALL 9 COURSES)
+        ======================================================== */}
+        <section id="courses" className="courses-section light-section">
+          <div className="wrap">
+            <div className="courses-header-wrapper rv">
+              <div className="section-header">
+                <span className="section-eyebrow">{t.tagline}</span>
+                <h2 className="section-title">{t.cT}</h2>
+                <p className="section-subtitle">{t.cP}</p>
+              </div>
+
+              {/* Filter Tabs */}
+              <div className="courses-tabs-bar" role="tablist" aria-label="Course Categories">
+                {['all', 'computer', 'academic'].map((key) => (
+                  <button
+                    key={key}
+                    type="button"
+                    role="tab"
+                    aria-selected={courseFilter === key}
+                    className={`tab-btn ${courseFilter === key ? 'active' : ''}`}
+                    onClick={() => setCourseFilter(key)}
+                  >
+                    {t.tabs[key]}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Balanced 9 Course Grid */}
+            <div className="courses-grid" key={courseFilter}>
+              {visibleCourses.map(([id, category, iconName], i) => (
+                <article
+                  key={id}
+                  className={`course-card card-${category} rv`}
+                  style={{ animationDelay: `${i * 60}ms` }}
+                >
+                  <div className="course-card-top">
+                    <div className={`course-icon-container ${category}`}>
+                      <RenderIcon name={iconName} size={28} />
+                    </div>
+                    <span className={`course-category-tag ${category}`}>
+                      {category === 'computer' ? t.catLabels.computer : t.catLabels.academic}
+                    </span>
+                  </div>
+
+                  <div className="course-card-body">
+                    <h3 className="course-title">{NAMES[id]}</h3>
+                    <p className="course-full-name">{COURSE_FULL_NAMES[id]}</p>
+                    <p className="course-desc">{t.cd[id]}</p>
+                  </div>
+
+                  <div className="course-card-footer">
+                    <span className="course-fee-hint">
+                      <Clock size={14} />
+                      {t.feeNote}
+                    </span>
+                    <button
+                      type="button"
+                      className="course-action-btn"
+                      onClick={() => handleEnquireCourse(id)}
+                      aria-label={`Enquire about ${NAMES[id]}`}
+                    >
+                      <span>{t.ask}</span>
+                      <ArrowUpRight size={17} />
+                    </button>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            6. INTERACTIVE COURSE EXPLORER
+        ======================================================== */}
+        <section id="explorer" className="explorer-section light-section alt-bg">
+          <div className="wrap">
+            <div className="section-header-centered rv">
+              <span className="section-eyebrow">{t.tagline}</span>
+              <h2 className="section-title">{t.xT}</h2>
+              <p className="section-subtitle">{t.xSub}</p>
+            </div>
+
+            <div className="explorer-interactive-box rv">
+              {/* Category Selection Tabs */}
+              <div className="explorer-categories" role="tablist" aria-label="Explorer categories">
+                {t.xCats.map((catLabel, index) => (
+                  <button
+                    key={index}
+                    type="button"
+                    role="tab"
+                    aria-selected={explorerCategory === index}
+                    className={`explorer-cat-btn ${explorerCategory === index ? 'active' : ''}`}
+                    onClick={() => setExplorerCategory(index)}
+                  >
+                    <div className="cat-btn-inner">
+                      <RenderIcon
+                        name={['Monitor', 'Keyboard', 'GraduationCap'][index]}
+                        size={22}
+                      />
+                      <span>{catLabel}</span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+
+              {/* Dynamic Results Card */}
+              <div className="explorer-result-card" aria-live="polite">
+                <div className="result-header">
+                  <h3 className="result-heading">{t.xCats[explorerCategory]}</h3>
+                  <span className="result-count">
+                    {explorerOptions[explorerCategory].courses.length} Programs
+                  </span>
+                </div>
+
+                <div className="explorer-chips-list">
+                  {explorerOptions[explorerCategory].courses.map((courseId) => (
+                    <button
+                      key={courseId}
+                      type="button"
+                      className="explorer-chip"
+                      onClick={() => handleEnquireCourse(courseId)}
+                      title={`Click to enquire about ${NAMES[courseId]}`}
+                    >
+                      <span className="chip-name">{NAMES[courseId]}</span>
+                      <span className="chip-arrow">
+                        <ArrowUpRight size={15} />
+                      </span>
+                    </button>
+                  ))}
+                </div>
+
+                {explorerCategory === 1 && (
+                  <div className="explorer-notice-box">
+                    <AlertCircle size={18} className="notice-icon" />
+                    <p className="notice-text">{t.xNote}</p>
+                  </div>
+                )}
+
+                <div className="result-action-row">
+                  <p className="result-tip">
+                    Click any course above or enquire directly for full syllabus & details:
+                  </p>
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                    onClick={() => handleEnquireCourse(explorerOptions[explorerCategory].courses[0])}
+                  >
+                    <span>{t.xDirectAction}</span>
+                    <ArrowRight size={17} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            7. WHY CHOOSE US SECTION
+        ======================================================== */}
+        <section id="why" className="why-section dark-section">
+          <div className="wrap">
+            <div className="section-header rv">
+              <span className="section-eyebrow cyan">{t.tagline}</span>
+              <h2 className="section-title text-white">{t.wT}</h2>
+              <p className="section-subtitle text-muted-light">{t.wSub}</p>
+            </div>
+
+            <div className="why-grid">
+              {t.w.map((item, idx) => {
+                const featureIcons = ['Award', 'Monitor', 'Keyboard', 'GraduationCap', 'Users'];
+                return (
+                  <div key={idx} className="why-card rv" style={{ transitionDelay: `${idx * 80}ms` }}>
+                    <div className="why-icon-wrapper">
+                      <RenderIcon name={featureIcons[idx] || 'Check'} size={26} />
+                    </div>
+                    <div className="why-content">
+                      <h3 className="why-title">{item.title}</h3>
+                      <p className="why-desc">{item.desc}</p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            8. FAQ ACCORDION SECTION
+        ======================================================== */}
+        <section id="faq" className="faq-section light-section">
+          <div className="wrap">
+            <div className="section-header-centered rv">
+              <span className="section-eyebrow">{t.tagline}</span>
+              <h2 className="section-title">{t.faqT}</h2>
+              <p className="section-subtitle">{t.faqSub}</p>
+            </div>
+
+            <div className="faq-accordion-container rv">
+              {t.faqs.map((faq, index) => {
+                const isOpen = openFaq === index;
+                return (
+                  <div key={index} className={`faq-item ${isOpen ? 'open' : ''}`}>
+                    <button
+                      type="button"
+                      className="faq-question-btn"
+                      aria-expanded={isOpen}
+                      aria-controls={`faq-answer-${index}`}
+                      id={`faq-btn-${index}`}
+                      onClick={() => setOpenFaq(isOpen ? null : index)}
+                    >
+                      <span className="faq-question-text">{faq.q}</span>
+                      <span className="faq-icon-holder" aria-hidden="true">
+                        <ChevronDown size={20} className={`faq-chevron ${isOpen ? 'rotated' : ''}`} />
+                      </span>
+                    </button>
+
+                    <div
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-btn-${index}`}
+                      className="faq-answer-pane"
+                      style={{ maxHeight: isOpen ? '240px' : '0' }}
+                    >
+                      <div className="faq-answer-inner">
+                        <p>{faq.a}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            9. ENQUIRY FORM (WHATSAPP INTEGRATION)
+        ======================================================== */}
+        <section id="enquire" className="enquiry-section dark-section">
+          <div className="wrap enquiry-layout">
+            {/* Left Info Column */}
+            <div className="enquiry-info-column rv">
+              <span className="section-eyebrow cyan">{t.tagline}</span>
+              <h2 className="section-title text-white">{t.fT}</h2>
+              <p className="section-subtitle text-muted-light">{t.fP}</p>
+
+              <div className="enquiry-benefits">
+                <div className="benefit-item">
+                  <div className="benefit-icon">
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <strong>Direct Admission Assistance</strong>
+                    <p>Transparent communication with Director Sandeep Nagar.</p>
+                  </div>
+                </div>
+
+                <div className="benefit-item">
+                  <div className="benefit-icon">
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <strong>Zero Hassle Registration</strong>
+                    <p>Enquire instantly on WhatsApp without storing personal data on the web.</p>
+                  </div>
+                </div>
+
+                <div className="benefit-item">
+                  <div className="benefit-icon">
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <strong>Course Counseling</strong>
+                    <p>Guidance to choose between DCA, PGDCA, CPCT, or degree options.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="enquiry-quick-card">
+                <Phone size={20} className="quick-icon" />
+                <div>
+                  <span className="quick-label">Need immediate telephone assistance?</span>
+                  <a href={`tel:${PHONE}`} className="quick-phone-link">
+                    {DISPLAY_PHONE}
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Form Card */}
+            <div className="enquiry-form-card rv">
+              <form onSubmit={handleSubmit} noValidate className="enquiry-form">
+                {/* Full Name */}
+                <div className="form-group">
+                  <label htmlFor="f-name" className="form-label">
+                    {t.name} <span className="req-star">*</span>
+                  </label>
+                  <input
+                    id="f-name"
+                    type="text"
+                    autoComplete="name"
+                    placeholder={t.namePlaceholder}
+                    value={formData.name}
+                    aria-invalid={!!formErrors.name}
+                    aria-describedby={formErrors.name ? 'f-name-err' : undefined}
+                    className={`form-input ${formErrors.name ? 'invalid' : ''}`}
+                    onChange={(e) => {
+                      setFormData({ ...formData, name: e.target.value });
+                      if (formErrors.name) setFormErrors({ ...formErrors, name: null });
+                    }}
+                  />
+                  {formErrors.name && (
+                    <span id="f-name-err" className="form-error" role="alert">
+                      {formErrors.name}
+                    </span>
+                  )}
+                </div>
+
+                {/* Mobile Number */}
+                <div className="form-group">
+                  <label htmlFor="f-mob" className="form-label">
+                    {t.mob} <span className="req-star">*</span>
+                  </label>
+                  <input
+                    id="f-mob"
+                    type="tel"
+                    inputMode="tel"
+                    autoComplete="tel"
+                    placeholder={t.mobPlaceholder}
+                    value={formData.mob}
+                    aria-invalid={!!formErrors.mob}
+                    aria-describedby={formErrors.mob ? 'f-mob-err' : undefined}
+                    className={`form-input ${formErrors.mob ? 'invalid' : ''}`}
+                    onChange={(e) => {
+                      setFormData({ ...formData, mob: e.target.value });
+                      if (formErrors.mob) setFormErrors({ ...formErrors, mob: null });
+                    }}
+                  />
+                  {formErrors.mob && (
+                    <span id="f-mob-err" className="form-error" role="alert">
+                      {formErrors.mob}
+                    </span>
+                  )}
+                </div>
+
+                {/* Course Selection */}
+                <div className="form-group">
+                  <label htmlFor="f-course" className="form-label">
+                    {t.course} <span className="req-star">*</span>
+                  </label>
+                  <div className="select-wrapper">
+                    <select
+                      id="f-course"
+                      value={formData.course}
+                      aria-invalid={!!formErrors.course}
+                      aria-describedby={formErrors.course ? 'f-course-err' : undefined}
+                      className={`form-select ${formErrors.course ? 'invalid' : ''}`}
+                      onChange={(e) => {
+                        setFormData({ ...formData, course: e.target.value });
+                        if (formErrors.course) setFormErrors({ ...formErrors, course: null });
+                      }}
+                    >
+                      <option value="">{t.pick}</option>
+                      <optgroup label="Computer Courses">
+                        {COURSES.filter((c) => c[1] === 'computer').map(([id]) => (
+                          <option key={id} value={id}>
+                            {NAMES[id]} — {COURSE_FULL_NAMES[id]}
+                          </option>
+                        ))}
+                      </optgroup>
+                      <optgroup label="Academic Degree Programs">
+                        {COURSES.filter((c) => c[1] === 'academic').map(([id]) => (
+                          <option key={id} value={id}>
+                            {NAMES[id]} — {COURSE_FULL_NAMES[id]}
+                          </option>
+                        ))}
+                      </optgroup>
+                    </select>
+                  </div>
+                  {formErrors.course && (
+                    <span id="f-course-err" className="form-error" role="alert">
+                      {formErrors.course}
+                    </span>
+                  )}
+                </div>
+
+                {/* Optional Message */}
+                <div className="form-group">
+                  <label htmlFor="f-msg" className="form-label">
+                    {t.msg}
+                  </label>
+                  <textarea
+                    id="f-msg"
+                    rows="3"
+                    placeholder={t.msgPlaceholder}
+                    value={formData.msg}
+                    className="form-textarea"
+                    onChange={(e) => setFormData({ ...formData, msg: e.target.value })}
+                  />
+                </div>
+
+                {/* Consent Checkbox */}
+                <div className="form-group consent-group">
+                  <label className="checkbox-label">
+                    <input
+                      id="f-consent"
+                      type="checkbox"
+                      checked={formData.consent}
+                      aria-invalid={!!formErrors.consent}
+                      aria-describedby={formErrors.consent ? 'f-consent-err' : undefined}
+                      onChange={(e) => {
+                        setFormData({ ...formData, consent: e.target.checked });
+                        if (formErrors.consent) setFormErrors({ ...formErrors, consent: null });
+                      }}
+                    />
+                    <span className="checkbox-text">{t.consent}</span>
+                  </label>
+                  {formErrors.consent && (
+                    <span id="f-consent-err" className="form-error" role="alert">
+                      {formErrors.consent}
+                    </span>
+                  )}
+                </div>
+
+                {/* Submit Button */}
+                <button type="submit" className="btn btn-primary btn-block btn-lg">
+                  <MessageCircle size={19} />
+                  <span>{t.send}</span>
+                </button>
+
+                {/* Success / Status Message */}
+                {submittedUrl && (
+                  <div className="form-status-box" role="status">
+                    <CheckCircle2 size={20} className="status-success-icon" />
+                    <div>
+                      <p className="status-msg">{t.ok}</p>
+                      <a
+                        href={submittedUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="status-fallback-link"
+                      >
+                        {t.fb}
+                        <ExternalLink size={14} />
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </form>
+            </div>
+          </div>
+        </section>
+
+        {/* ========================================================
+            10. CONTACT SECTION
+        ======================================================== */}
+        <section id="contact" className="contact-section light-section">
+          <div className="wrap">
+            <div className="section-header-centered rv">
+              <span className="section-eyebrow">{t.tagline}</span>
+              <h2 className="section-title">{t.cT2}</h2>
+              <p className="section-subtitle">{t.cSub}</p>
+            </div>
+
+            {/* Contact Action Cards */}
+            <div className="contact-cards-grid">
+              {/* Phone Card */}
+              <a href={`tel:${PHONE}`} className="contact-card rv">
+                <div className="contact-card-icon blue">
+                  <Phone size={24} />
+                </div>
+                <div className="contact-card-content">
+                  <span className="contact-card-label">{t.call}</span>
+                  <strong className="contact-card-value">{DISPLAY_PHONE}</strong>
+                  <span className="contact-card-hint">Mon – Sun (Daytime Hours)</span>
+                </div>
+                <ArrowRight size={18} className="card-arrow" />
+              </a>
+
+              {/* WhatsApp Card */}
+              <a
+                href={`https://wa.me/${PHONE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="contact-card rv"
+              >
+                <div className="contact-card-icon green">
+                  <MessageCircle size={24} />
+                </div>
+                <div className="contact-card-content">
+                  <span className="contact-card-label">{t.wa}</span>
+                  <strong className="contact-card-value">{DISPLAY_PHONE}</strong>
+                  <span className="contact-card-hint">Instant Chat & Enquiries</span>
+                </div>
+                <ArrowRight size={18} className="card-arrow" />
+              </a>
+
+              {/* Email Card */}
+              <a href={`mailto:${MAIL}`} className="contact-card rv">
+                <div className="contact-card-icon cyan">
+                  <Mail size={24} />
+                </div>
+                <div className="contact-card-content">
+                  <span className="contact-card-label">{t.email}</span>
+                  <strong className="contact-card-value email-text">{MAIL}</strong>
+                  <span className="contact-card-hint">Online Admission Queries</span>
+                </div>
+                <ArrowRight size={18} className="card-arrow" />
+              </a>
+
+              {/* Map Card */}
+              <a href={MAP} target="_blank" rel="noopener noreferrer" className="contact-card rv">
+                <div className="contact-card-icon purple">
+                  <MapPin size={24} />
+                </div>
+                <div className="contact-card-content">
+                  <span className="contact-card-label">{t.map}</span>
+                  <strong className="contact-card-value address-text">{t.addr}</strong>
+                  <span className="contact-card-hint">Open in Google Maps</span>
+                </div>
+                <ExternalLink size={18} className="card-arrow" />
+              </a>
+            </div>
+
+            {/* Campus Info Banner */}
+            <div className="campus-banner-card rv">
+              <div className="campus-banner-info">
+                <div className="campus-icon">
+                  <Building2 size={28} />
+                </div>
+                <div>
+                  <h3 className="campus-title">{t.instituteName}</h3>
+                  <address className="campus-address">
+                    <span>{t.addr}</span>
+                    <span className="campus-director">
+                      {t.currentDirector}: {t.directorName}
+                    </span>
+                  </address>
+                </div>
+              </div>
+              <div className="campus-banner-actions">
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={() => scrollTo('enquire')}
+                >
+                  <span>{t.enq}</span>
+                  <ArrowRight size={17} />
+                </button>
+                <a
+                  href={MAP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline"
+                >
+                  <MapPin size={17} />
+                  <span>{t.map}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      {/* ========================================================
+          11. PREMIUM FOOTER
+      ======================================================== */}
+      <footer className="site-footer dark-section">
+        <div className="wrap footer-grid">
+          {/* Col 1: Institute Brand & Info */}
+          <div className="footer-col col-brand">
+            <div className="footer-brand">
+              <Logo />
+              <div>
+                <span className="footer-brand-title">{t.instituteName}</span>
+                <span className="footer-brand-tag">{t.tagline}</span>
+              </div>
+            </div>
+            <p className="footer-desc">{t.fd}</p>
+            <div className="footer-director-note">
+              <span>{t.currentDirector}:</span> <strong>{t.directorName}</strong>
+            </div>
+          </div>
+
+          {/* Col 2: Navigation Links */}
+          <div className="footer-col">
+            <h4 className="footer-heading">{t.quickLinks}</h4>
+            <ul className="footer-links-list">
+              {t.navIds.map((id, index) => (
+                <li key={id}>
+                  <a
+                    href={`#${id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollTo(id);
+                    }}
+                  >
+                    {t.nav[index]}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3: Programs Links */}
+          <div className="footer-col">
+            <h4 className="footer-heading">{t.courseLinks}</h4>
+            <ul className="footer-links-list">
+              {COURSES.map(([id]) => (
+                <li key={id}>
+                  <button
+                    type="button"
+                    className="footer-course-link"
+                    onClick={() => handleEnquireCourse(id)}
+                  >
+                    <span>{NAMES[id]}</span>
+                    <ArrowUpRight size={13} />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 4: Contact & Location */}
+          <div className="footer-col col-contact">
+            <h4 className="footer-heading">{t.contactInfo}</h4>
+            <div className="footer-contact-details">
+              <a href={`tel:${PHONE}`} className="footer-contact-item">
+                <Phone size={16} />
+                <span>{DISPLAY_PHONE}</span>
+              </a>
+              <a
+                href={`https://wa.me/${PHONE}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-contact-item"
+              >
+                <MessageCircle size={16} />
+                <span>WhatsApp ({DISPLAY_PHONE})</span>
+              </a>
+              <a href={`mailto:${MAIL}`} className="footer-contact-item">
+                <Mail size={16} />
+                <span className="email-wrap">{MAIL}</span>
+              </a>
+              <div className="footer-contact-item address-item">
+                <MapPin size={16} />
+                <span>{t.addr}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Footer Bottom Bar */}
+        <div className="footer-bottom-bar">
+          <div className="wrap footer-bottom-inner">
+            <p className="copyright-text">
+              © {new Date().getFullYear()} {t.instituteName}. {t.copyright}
+            </p>
+            <div className="footer-bottom-actions">
+              <button
+                type="button"
+                className="footer-lang-btn"
+                onClick={() => setLang(lang === 'en' ? 'hi' : 'en')}
+              >
+                <Languages size={15} />
+                <span>{lang === 'en' ? 'हिंदी में देखें' : 'View in English'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}

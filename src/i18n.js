@@ -1,40 +1,410 @@
-export const COURSES=[
-['dca','computer','Monitor'],['pgdca','computer','Laptop'],['cpct','computer','Keyboard'],['photoshop','computer','Palette'],
-['ba','academic','GraduationCap'],['bsc','academic','FlaskConical'],['bcom','academic','Calculator'],['ma','academic','BookOpen'],['mcom','academic','Briefcase']]
-export const NAMES={dca:'DCA',pgdca:'PGDCA',cpct:'CPCT',photoshop:'Adobe Photoshop',ba:'BA',bsc:'BSc',bcom:'BCom',ma:'MA',mcom:'MCom'}
-export const T={
-en:{nav:['Home','About','Courses','Contact'],enq:'Enquire Now',eyebrow:'Abhi Computer Center · Est. 2016',
-h1:['Learn Today.','Build Your','Tomorrow.'],heroP:'Explore computer skills and academic study options with guidance that helps you take your next step with confidence.',
-explore:'Explore Courses',talk:'Talk to Us ↗',loc:'Pachore, Madhya Pradesh',f1:'Computer Skills',f2:'Academic Guidance',f3:'Pick a course',
-cT:'Find Your Next Move.',cP:'Explore learning options that match your interests and goals.',tabs:{all:'All Courses',computer:'Computer',academic:'Academic'},ask:'Ask about this',
-cd:{dca:'Build core computer skills with a diploma in computer applications. Contact us for current details.',pgdca:'A postgraduate diploma for deeper computer applications study. Contact us for current details.',cpct:'Typing and computer preparation for CPCT. Contact us for current details.',photoshop:'Learn design and photo editing with Adobe Photoshop.',ba:'Bachelor of Arts. Ask about requirements.',bsc:'Bachelor of Science. Ask about requirements.',bcom:'Bachelor of Commerce. Ask about requirements.',ma:'Master of Arts. Ask about requirements.',mcom:'Master of Commerce. Ask about requirements.'},
-aT:'Rooted in Pachore. Focused on Your Future.',aP:'Abhi Computer Center has been providing education and guidance to students in Pachore since 2016. We help learners explore computer skills and academic study options so they can take informed steps toward their goals.',
-since:'Since 2016',dir:'Director',dirN:'Sandeep Nagar',
-wT:'A Clearer Path to Your Next Step.',w:[['Course Guidance','Get help understanding available learning options.'],['Computer Learning','Explore practical digital and computer-related skills.'],['Academic Options','Ask about available academic courses and requirements.'],['Direct Communication','Connect with the institute for current details.']],
-xT:'What Would You Like to Explore?',x:['Computer Skills','Typing Preparation','Academic Courses'],xNote:'CPCT preparation: contact us to learn about the exam process and our guidance. No exam results are promised.',
-fT:'Your Next Step Starts Here.',fP:"Tell us what you're interested in, and contact us for the latest course and admission information.",
-name:'Full name',mob:'Mobile number',course:'Interested course',pick:'Select a course',msg:'Message (optional)',consent:'I agree to be contacted by Abhi Computer Center about my enquiry.',send:'Send on WhatsApp',
-eName:'Enter your full name.',eMob:'Enter a valid 10-digit Indian mobile number.',eCourse:'Select a course.',eConsent:'Please give your consent to continue.',
-ok:'WhatsApp should open with your message. Press Send there to reach us. Nothing is stored on this website.',fb:'Popup blocked? Open WhatsApp',
-msgHead:'Hello Abhi Computer Center, I would like to enquire about admission.',msgTail:'Please share the current course details and admission process.',
-cT2:'Visit or call us.',call:'Call Now',email:'Email',wa:'WhatsApp',map:'Directions',addr:'Near Railway Crossing, New Colony, Pachore, Madhya Pradesh',
-fd:'Computer and academic course guidance in Pachore since 2016.',menu:'Menu'},
-hi:{nav:['होम','हमारे बारे में','कोर्स','संपर्क'],enq:'अभी पूछें',eyebrow:'अभि कंप्यूटर सेंटर · स्थापना 2016',
-h1:['आज सीखिए।','बनाइए अपना','कल।'],heroP:'कंप्यूटर कौशल और शैक्षणिक पाठ्यक्रम जानिए, ऐसे मार्गदर्शन के साथ जो आपको आत्मविश्वास से अगला कदम उठाने में मदद करे।',
-explore:'कोर्स देखें',talk:'हमसे बात करें ↗',loc:'पचोर, मध्य प्रदेश',f1:'कंप्यूटर कौशल',f2:'शैक्षणिक मार्गदर्शन',f3:'कोर्स चुनें',
-cT:'अपना अगला कदम चुनें।',cP:'अपनी रुचि और लक्ष्य के अनुसार सीखने के विकल्प देखें।',tabs:{all:'सभी कोर्स',computer:'कंप्यूटर',academic:'शैक्षणिक'},ask:'इसके बारे में पूछें',
-cd:{dca:'कंप्यूटर एप्लीकेशन डिप्लोमा से बुनियादी कंप्यूटर कौशल सीखें। वर्तमान जानकारी के लिए संपर्क करें।',pgdca:'कंप्यूटर एप्लीकेशन के गहन अध्ययन के लिए स्नातकोत्तर डिप्लोमा। वर्तमान जानकारी के लिए संपर्क करें।',cpct:'CPCT के लिए टाइपिंग और कंप्यूटर तैयारी। वर्तमान जानकारी के लिए संपर्क करें।',photoshop:'एडोबी फोटोशॉप से डिज़ाइन और फोटो एडिटिंग सीखें।',ba:'बैचलर ऑफ आर्ट्स। आवश्यकताओं के बारे में पूछें।',bsc:'बैचलर ऑफ साइंस। आवश्यकताओं के बारे में पूछें।',bcom:'बैचलर ऑफ कॉमर्स। आवश्यकताओं के बारे में पूछें।',ma:'मास्टर ऑफ आर्ट्स। आवश्यकताओं के बारे में पूछें।',mcom:'मास्टर ऑफ कॉमर्स। आवश्यकताओं के बारे में पूछें।'},
-aT:'पचोर में जड़ें। आपके भविष्य पर ध्यान।',aP:'अभि कंप्यूटर सेंटर 2016 से पचोर के विद्यार्थियों को शिक्षा और मार्गदर्शन दे रहा है। हम कंप्यूटर कौशल और शैक्षणिक पाठ्यक्रम जानने में मदद करते हैं ताकि आप अपने लक्ष्यों की ओर सोच-समझकर कदम बढ़ा सकें।',
-since:'2016 से',dir:'निदेशक',dirN:'संदीप नागर',
-wT:'अगले कदम की साफ़ राह।',w:[['कोर्स मार्गदर्शन','उपलब्ध सीखने के विकल्प समझने में मदद पाएं।'],['कंप्यूटर शिक्षा','व्यावहारिक डिजिटल और कंप्यूटर कौशल जानें।'],['शैक्षणिक विकल्प','उपलब्ध शैक्षणिक कोर्स और आवश्यकताओं के बारे में पूछें।'],['सीधा संवाद','वर्तमान जानकारी के लिए संस्थान से जुड़ें।']],
-xT:'आप क्या जानना चाहेंगे?',x:['कंप्यूटर कौशल','टाइपिंग तैयारी','शैक्षणिक कोर्स'],xNote:'CPCT तैयारी: परीक्षा प्रक्रिया और हमारे मार्गदर्शन के लिए संपर्क करें। किसी परीक्षा परिणाम का वादा नहीं है।',
-fT:'आपका अगला कदम यहीं से।',fP:'बताइए आपकी रुचि क्या है, और नवीनतम कोर्स व प्रवेश जानकारी के लिए हमसे संपर्क करें।',
-name:'पूरा नाम',mob:'मोबाइल नंबर',course:'इच्छित कोर्स',pick:'कोर्स चुनें',msg:'संदेश (वैकल्पिक)',consent:'मैं अपनी पूछताछ के लिए अभि कंप्यूटर सेंटर द्वारा संपर्क किए जाने से सहमत हूँ।',send:'WhatsApp पर भेजें',
-eName:'अपना पूरा नाम लिखें।',eMob:'सही 10 अंकों का भारतीय मोबाइल नंबर लिखें।',eCourse:'कोई कोर्स चुनें।',eConsent:'आगे बढ़ने के लिए सहमति दें।',
-ok:'WhatsApp आपके संदेश के साथ खुलना चाहिए। हम तक पहुँचने के लिए वहाँ Send दबाएँ। इस वेबसाइट पर कुछ भी सहेजा नहीं जाता।',fb:'पॉपअप रुका? WhatsApp खोलें',
-msgHead:'Hello Abhi Computer Center, I would like to enquire about admission.',msgTail:'Please share the current course details and admission process.',
-cT2:'मिलने आएँ या फ़ोन करें।',call:'अभी कॉल करें',email:'ईमेल',wa:'WhatsApp',map:'दिशा-निर्देश',addr:'रेलवे क्रॉसिंग के पास, न्यू कॉलोनी, पचोर, मध्य प्रदेश',
-fd:'2016 से पचोर में कंप्यूटर और शैक्षणिक कोर्स मार्गदर्शन।',menu:'मेन्यू'}}
+export const COURSES = [
+  ['dca', 'computer', 'Monitor'],
+  ['pgdca', 'computer', 'Laptop'],
+  ['cpct', 'computer', 'Keyboard'],
+  ['photoshop', 'computer', 'Palette'],
+  ['ba', 'academic', 'GraduationCap'],
+  ['bsc', 'academic', 'FlaskConical'],
+  ['bcom', 'academic', 'Calculator'],
+  ['ma', 'academic', 'BookOpen'],
+  ['mcom', 'academic', 'Briefcase']
+];
 
-Object.assign(T.en,{dir:'Current director',jT:'Our Journey Since 2016',tl:[['2016','Abhi Computer Center begins its journey in Pachore.'],['2016–2020','Director — Sanjay Nagar'],['2021–Present','Director — Sandeep Nagar']]})
-Object.assign(T.hi,{dir:'वर्तमान निदेशक',jT:'2016 से हमारा सफ़र',tl:[['2016','अभि कंप्यूटर सेंटर ने पचोर में अपनी यात्रा शुरू की।'],['2016–2020','निदेशक — संजय नागर'],['2021 से वर्तमान','निदेशक — संदीप नागर']]})
+export const NAMES = {
+  dca: 'DCA',
+  pgdca: 'PGDCA',
+  cpct: 'CPCT',
+  photoshop: 'Adobe Photoshop',
+  ba: 'BA',
+  bsc: 'BSc',
+  bcom: 'BCom',
+  ma: 'MA',
+  mcom: 'MCom'
+};
+
+export const COURSE_FULL_NAMES = {
+  dca: 'Diploma in Computer Applications',
+  pgdca: 'Post Graduate Diploma in Computer Applications',
+  cpct: 'Computer Proficiency Certification Test',
+  photoshop: 'Adobe Photoshop & Graphic Editing',
+  ba: 'Bachelor of Arts (Degree Guidance)',
+  bsc: 'Bachelor of Science (Degree Guidance)',
+  bcom: 'Bachelor of Commerce (Degree Guidance)',
+  ma: 'Master of Arts (PG Guidance)',
+  mcom: 'Master of Commerce (PG Guidance)'
+};
+
+export const T = {
+  en: {
+    nav: ['Home', 'About', 'Courses', 'Explorer', 'Why Us', 'FAQs', 'Contact'],
+    navIds: ['home', 'about', 'courses', 'explorer', 'why', 'faq', 'contact'],
+    enq: 'Enquire Now',
+    tagline: 'Pachore · Est. 2016',
+    instituteName: 'Abhi Computer Center',
+    heroBadge: 'Empowering Learning Since 2016',
+    h1: ['Learn Today.', 'Build Your', 'Tomorrow.'],
+    heroP: 'Explore practical computer skills and academic study options with personal guidance that helps you take your next step with clarity and confidence.',
+    explore: 'Explore Courses',
+    talk: 'Talk to Us',
+    loc: 'Near Railway Crossing, New Colony, Pachore, MP',
+    admissionsOpen: 'Admissions Open',
+    heroStats: [
+      { label: 'Educational Legacy', val: 'Since 2016' },
+      { label: 'Programs Offered', val: '9 Courses' },
+      { label: 'Campus Location', val: 'Pachore, MP' }
+    ],
+    heroIllustration: {
+      tag: 'Abhi Learning Hub',
+      title: 'Digital Literacy & Academic Guidance',
+      chip1: 'Computer Diploma',
+      chip2: 'CPCT Practice',
+      chip3: 'University Guidance',
+      status: 'Admissions Open 2025–26'
+    },
+    aT: 'Rooted in Pachore. Focused on Your Future.',
+    aP: 'Abhi Computer Center has been dedicated to providing quality computer education and higher academic study guidance to learners in Pachore since 2016. We believe in practical, transparent learning that enables students to gain digital proficiency and take confident steps toward their educational goals.',
+    establishedYear: 'Established 2016',
+    currentDirector: 'Current Director',
+    directorName: 'Sandeep Nagar',
+    founderDirector: 'Founding Director (2016–2020)',
+    founderName: 'Sanjay Nagar',
+    aboutPillars: [
+      {
+        title: 'Practical Computer Education',
+        desc: 'Hands-on lab training in essential software, office productivity, and computer fundamentals.'
+      },
+      {
+        title: 'CPCT Typing & Test Guidance',
+        desc: 'Focused preparation for Hindi & English typing along with computer proficiency concepts.'
+      },
+      {
+        title: 'University Degree Guidance',
+        desc: 'Educational assistance for undergraduate and postgraduate university academic programs.'
+      },
+      {
+        title: 'Student-Centric Environment',
+        desc: 'Direct access to experienced leadership and guidance tailored to individual learning paces.'
+      }
+    ],
+    jT: 'Our Leadership & Journey',
+    jSub: 'Clear, continuous educational guidance serving Pachore since 2016.',
+    tl: [
+      {
+        period: '2016',
+        role: 'Foundation in Pachore',
+        desc: 'Abhi Computer Center begins its educational mission in Pachore, Madhya Pradesh.'
+      },
+      {
+        period: '2016–2020',
+        role: 'Director: Sanjay Nagar',
+        desc: 'Establishment of core computer diploma training and foundational academic counseling.'
+      },
+      {
+        period: '2021–Present',
+        role: 'Director: Sandeep Nagar',
+        desc: 'Expanded digital training, modern CPCT typing preparation, and enhanced student guidance.'
+      }
+    ],
+    cT: 'Explore Our Courses',
+    cP: 'Practical computer diplomas and academic study guidance. Contact us for current fee structures, batch schedules, and admission requirements.',
+    tabs: {
+      all: 'All Courses (9)',
+      computer: 'Computer Skills (4)',
+      academic: 'Academic Degrees (5)'
+    },
+    catLabels: {
+      computer: 'Computer Application',
+      academic: 'Academic Degree'
+    },
+    ask: 'Enquire for Details',
+    feeNote: 'Contact institute for current details',
+    cd: {
+      dca: 'Build core digital literacy and practical software skills with a recognized diploma in computer applications.',
+      pgdca: 'In-depth postgraduate computer applications program for graduates looking to advance their technical capabilities.',
+      cpct: 'Comprehensive Hindi and English typing practice and computer proficiency concepts for CPCT exam readiness.',
+      photoshop: 'Creative photo editing, graphic composition, banner design, and digital visual tools with Adobe Photoshop.',
+      ba: 'Guidance for Bachelor of Arts degree subjects in humanities, languages, and social studies.',
+      bsc: 'Academic guidance for Bachelor of Science degree pathways across scientific disciplines.',
+      bcom: 'Comprehensive counseling for Bachelor of Commerce degree studies covering commerce and accounting.',
+      ma: 'Postgraduate academic guidance for Master of Arts degree specializations.',
+      mcom: 'Postgraduate academic guidance for Master of Commerce advanced studies and business principles.'
+    },
+    xT: 'Interactive Course Explorer',
+    xSub: 'Select a pathway to see how Abhi Computer Center can support your educational journey.',
+    xCats: ['Computer Skills', 'CPCT Preparation', 'Academic Courses'],
+    xNote: 'CPCT preparation: contact us to learn about the exam process and our guidance. No exam results are promised.',
+    xDirectAction: 'Ask About This Selection',
+    wT: 'Why Choose Abhi Computer Center',
+    wSub: 'A reliable, student-first learning center delivering practical guidance in Pachore.',
+    w: [
+      {
+        title: 'Established Legacy (Since 2016)',
+        desc: 'Over 8 years of continuous, trusted educational presence helping Pachore students learn and grow.'
+      },
+      {
+        title: 'Practical Computer Education',
+        desc: 'Focus on hands-on practical lab sessions so students understand real-world digital applications.'
+      },
+      {
+        title: 'CPCT Typing & Theory Guidance',
+        desc: 'Structured Hindi and English typing practice with guidance on computer exam syllabus.'
+      },
+      {
+        title: 'Academic Degree Assistance',
+        desc: 'Authentic information and counseling for BA, BSc, BCom, MA, and MCom study pathways.'
+      },
+      {
+        title: 'Direct Leadership Communication',
+        desc: 'Speak directly with Director Sandeep Nagar for honest, transparent guidance without middlemen.'
+      }
+    ],
+    faqT: 'Frequently Asked Questions',
+    faqSub: 'Find clear answers to common questions about courses, admissions, and facilities.',
+    faqs: [
+      {
+        q: 'What courses are offered at Abhi Computer Center?',
+        a: 'We offer computer courses including DCA, PGDCA, CPCT typing and computer preparation, and Adobe Photoshop. In addition, we provide academic guidance for degree programs including BA, BSc, BCom, MA, and MCom.'
+      },
+      {
+        q: 'How can I learn about course fees, eligibility, and batch timings?',
+        a: 'Course fees, eligibility criteria, and batch schedules depend on the specific program. Please visit our center or contact us directly at +91 7000636271 or on WhatsApp for current, accurate details.'
+      },
+      {
+        q: 'Where is Abhi Computer Center located in Pachore?',
+        a: 'We are conveniently located Near Railway Crossing, New Colony, Pachore, Madhya Pradesh 465683. You can use the Directions button on this page to view our exact location on Google Maps.'
+      },
+      {
+        q: 'Does the institute offer CPCT exam preparation?',
+        a: 'Yes, we provide structured Hindi and English typing practice and computer theory guidance to help candidates prepare for the CPCT examination. Please note that no exam results or passing guarantees are promised.'
+      },
+      {
+        q: 'How do I enquire or apply for admission?',
+        a: 'You can submit the WhatsApp enquiry form on this website, call Director Sandeep Nagar at +91 7000636271, send an email, or visit our Pachore campus in person.'
+      },
+      {
+        q: 'What are the institute working hours?',
+        a: 'We are open throughout the week during daytime hours. Please call us in advance or message on WhatsApp to confirm timing or schedule a personal visit.'
+      }
+    ],
+    fT: 'Enquire for Admission',
+    fP: 'Select your interested course and send an enquiry directly to our official WhatsApp. We will provide full batch and admission details.',
+    name: 'Full Name',
+    namePlaceholder: 'Enter your full name',
+    mob: 'Mobile Number',
+    mobPlaceholder: '10-digit mobile number (e.g. 9876543210)',
+    course: 'Interested Course',
+    pick: 'Select a course...',
+    msg: 'Optional Message / Question',
+    msgPlaceholder: 'Tell us any specific questions or batch preferences...',
+    consent: 'I agree to be contacted by Abhi Computer Center regarding my course enquiry.',
+    send: 'Send Enquiry via WhatsApp',
+    eName: 'Please enter your full name.',
+    eMob: 'Please enter a valid 10-digit Indian mobile number.',
+    eCourse: 'Please select a course.',
+    eConsent: 'Please tick the consent box to proceed.',
+    ok: 'WhatsApp should open with your pre-filled enquiry. Click Send there to reach us. No personal data is stored on this website.',
+    fb: 'Popup blocked? Click here to open WhatsApp',
+    msgHead: 'Hello Abhi Computer Center, I would like to enquire about admission.',
+    msgTail: 'Please share the current course details, batch timings, and admission process.',
+    cT2: 'Get in Touch with Us',
+    cSub: 'Visit our center in Pachore or connect via phone, WhatsApp, or email.',
+    call: 'Call Directly',
+    email: 'Send Email',
+    wa: 'WhatsApp Chat',
+    map: 'View on Maps',
+    addr: 'Near Railway Crossing, New Colony, Pachore, Madhya Pradesh 465683',
+    fd: 'Providing dedicated computer education and academic degree guidance to students in Pachore since 2016.',
+    quickLinks: 'Quick Links',
+    courseLinks: 'Our Programs',
+    contactInfo: 'Contact Information',
+    copyright: 'All rights reserved. Education & Guidance Center.',
+    menu: 'Toggle Menu',
+    closeMenu: 'Close Menu'
+  },
+  hi: {
+    nav: ['होम', 'हमारे बारे में', 'कोर्स', 'एक्सप्लोरर', 'विशेषताएं', 'सामान्य प्रश्न', 'संपर्क'],
+    navIds: ['home', 'about', 'courses', 'explorer', 'why', 'faq', 'contact'],
+    enq: 'अभी पूछें',
+    tagline: 'पचोर · स्थापना 2016',
+    instituteName: 'अभि कंप्यूटर सेंटर',
+    heroBadge: '2016 से समर्पित शिक्षा एवं मार्गदर्शन',
+    h1: ['आज सीखिए।', 'बनाइए अपना', 'कल।'],
+    heroP: 'कंप्यूटर कौशल और शैक्षणिक अध्ययन के विकल्प जानिए, ऐसे मार्गदर्शन के साथ जो आपको आत्मविश्वास और स्पष्टता से अगला कदम उठाने में मदद करे।',
+    explore: 'कोर्स देखें',
+    talk: 'हमसे बात करें',
+    loc: 'रेलवे क्रॉसिंग के पास, न्यू कॉलोनी, पचोर (म.प्र.)',
+    admissionsOpen: 'प्रवेश प्रारंभ',
+    heroStats: [
+      { label: 'शैक्षणिक अनुभव', val: '2016 से' },
+      { label: 'उपलब्ध पाठ्यक्रम', val: '9 कोर्स' },
+      { label: 'संस्थान स्थान', val: 'पचोर (म.प्र.)' }
+    ],
+    heroIllustration: {
+      tag: 'अभि लर्निंग सेंटर',
+      title: 'डिजिटल शिक्षा एवं शैक्षणिक मार्गदर्शन',
+      chip1: 'कंप्यूटर डिप्लोमा',
+      chip2: 'CPCT टाइपिंग अभ्यास',
+      chip3: 'विश्वविद्यालय मार्गदर्शन',
+      status: 'प्रवेश सत्र 2025–26'
+    },
+    aT: 'पचोर में जड़ें। आपके भविष्य पर ध्यान।',
+    aP: 'अभि कंप्यूटर सेंटर 2016 से पचोर के विद्यार्थियों को गुणवत्तापूर्ण कंप्यूटर शिक्षा और उच्च शैक्षणिक अध्ययन का मार्गदर्शन प्रदान कर रहा है। हमारा उद्देश्य विद्यार्थियों को व्यावहारिक डिजिटल कौशल में दक्ष बनाना और उच्च शिक्षा में सही दिशा देना है ताकि वे अपने लक्ष्यों की ओर आत्मविश्वास से आगे बढ़ सकें।',
+    establishedYear: 'स्थापना वर्ष 2016',
+    currentDirector: 'वर्तमान निदेशक',
+    directorName: 'संदीप नागर',
+    founderDirector: 'संस्थापक निदेशक (2016–2020)',
+    founderName: 'संजय नागर',
+    aboutPillars: [
+      {
+        title: 'व्यावहारिक कंप्यूटर शिक्षा',
+        desc: 'कंप्यूटर फंडामेंटल्स, ऑफिस टूल्स और वास्तविक कार्यक्षेत्र में उपयोगी डिजिटल कौशल की हैंड्स-ऑन ट्रेनिंग।'
+      },
+      {
+        title: 'CPCT टाइपिंग एवं परीक्षा तैयारी',
+        desc: 'हिंदी एवं अंग्रेजी टाइपिंग अभ्यास तथा कंप्यूटर थ्योरी की बुनियादी समझ के लिए विशेष अभ्यास।'
+      },
+      {
+        title: 'विश्वविद्यालय डिग्री मार्गदर्शन',
+        desc: 'स्नातक एवं स्नातकोत्तर डिग्री पाठ्यक्रमों की सही जानकारी और शैक्षणिक दिशा-निर्देश।'
+      },
+      {
+        title: 'विद्यार्थी-केंद्रित वातावरण',
+        desc: 'अनुभवी निदेशक से सीधा संपर्क और प्रत्येक विद्यार्थी की गति के अनुसार व्यक्तिगत मार्गदर्शन।'
+      }
+    ],
+    jT: 'हमारा नेतृत्व एवं सफ़र',
+    jSub: '2016 से पचोर में निरंतर और विश्वसनीय शैक्षणिक मार्गदर्शन।',
+    tl: [
+      {
+        period: '2016',
+        role: 'पचोर में स्थापना',
+        desc: 'अभि कंप्यूटर सेंटर ने पचोर, मध्य प्रदेश में अपनी शैक्षणिक यात्रा प्रारंभ की।'
+      },
+      {
+        period: '2016–2020',
+        role: 'निदेशक: संजय नागर',
+        desc: 'कंप्यूटर डिप्लोमा शिक्षा की नींव और विद्यार्थियों के लिए बुनियादी मार्गदर्शन का शुभारंभ।'
+      },
+      {
+        period: '2021–वर्तमान',
+        role: 'निदेशक: संदीप नागर',
+        desc: 'डिजिटल प्रशिक्षण का विस्तार, आधुनिक CPCT टाइपिंग तैयारी और सुदृढ़ छात्र मार्गदर्शन।'
+      }
+    ],
+    cT: 'हमारे पाठ्यक्रम एवं मार्गदर्शन',
+    cP: 'व्यावहारिक कंप्यूटर डिप्लोमा एवं शैक्षणिक अध्ययन मार्गदर्शन। वर्तमान फीस, बैच समय और प्रवेश जानकारी के लिए संपर्क करें।',
+    tabs: {
+      all: 'सभी कोर्स (9)',
+      computer: 'कंप्यूटर कौशल (4)',
+      academic: 'शैक्षणिक डिग्री (5)'
+    },
+    catLabels: {
+      computer: 'कंप्यूटर एप्लीकेशन',
+      academic: 'शैक्षणिक डिग्री'
+    },
+    ask: 'विवरण के लिए पूछें',
+    feeNote: 'वर्तमान जानकारी हेतु संपर्क करें',
+    cd: {
+      dca: 'कंप्यूटर एप्लीकेशन डिप्लोमा (DCA) से सॉफ्टवेयर टूल्स, विंडोज और बुनियादी कंप्यूटर दक्षता में महारत हासिल करें।',
+      pgdca: 'स्नातक विद्यार्थियों के लिए कंप्यूटर एप्लीकेशन का गहन स्नातकोत्तर डिप्लोमा (PGDCA)।',
+      cpct: 'CPCT परीक्षा के लिए हिंदी व अंग्रेजी टाइपिंग अभ्यास और आवश्यक कंप्यूटर अवधारणाओं की तैयारी।',
+      photoshop: 'एडोबी फोटोशॉप द्वारा फोटो एडिटिंग, ग्राफिक डिज़ाइन, बैनर निर्माण और डिजिटल विज़ुअल कार्य सीखें।',
+      ba: 'बैचलर ऑफ आर्ट्स (BA) के विभिन्न विषयों, विकल्पों और अध्ययन प्रक्रिया के लिए शैक्षणिक मार्गदर्शन।',
+      bsc: 'बैचलर ऑफ साइंस (BSc) डिग्री संकाय के लिए विस्तृत शैक्षणिक मार्गदर्शन और प्रवेश परामर्श।',
+      bcom: 'बैचलर ऑफ कॉमर्स (BCom) के तहत लेखांकन, वित्त और वाणिज्य अध्ययन के लिए मार्गदर्शन।',
+      ma: 'मास्टर ऑफ आर्ट्स (MA) स्नातकोत्तर डिग्री में उच्च अध्ययन हेतु शैक्षणिक मार्गदर्शन।',
+      mcom: 'मास्टर ऑफ कॉमर्स (MCom) स्नातकोत्तर डिग्री और उन्नत वाणिज्य विषयों के लिए परामर्श।'
+    },
+    xT: 'इंटरैक्टिव कोर्स एक्सप्लोरर',
+    xSub: 'अपनी रुचि का क्षेत्र चुनें और जानें कि अभि कंप्यूटर सेंटर आपके भविष्य में कैसे मददगार हो सकता है।',
+    xCats: ['कंप्यूटर कौशल', 'CPCT तैयारी', 'शैक्षणिक कोर्स'],
+    xNote: 'CPCT तैयारी: परीक्षा प्रक्रिया और हमारे मार्गदर्शन को समझने के लिए संपर्क करें। किसी परीक्षा परिणाम का वादा नहीं किया जाता।',
+    xDirectAction: 'इस चयन के बारे में पूछें',
+    wT: 'अभि कंप्यूटर सेंटर क्यों चुनें',
+    wSub: 'पचोर में विद्यार्थियों के विश्वसनीय और समर्पित शिक्षण संस्थान के मुख्य आधार।',
+    w: [
+      {
+        title: 'विश्वसनीय अनुभव (2016 से)',
+        desc: 'पचोर में 8 से अधिक वर्षों से निरंतर विद्यार्थियों को सही दिशा और शिक्षा प्रदान करने की प्रतिबद्धता।'
+      },
+      {
+        title: 'व्यावहारिक कंप्यूटर प्रशिक्षण',
+        desc: 'केवल किताबी नहीं, बल्कि कंप्यूटर लैब में स्वयं अभ्यास करके डिजिटल टूल्स सीखने का अवसर।'
+      },
+      {
+        title: 'CPCT टाइपिंग एवं थ्योरी गाइडेंस',
+        desc: 'हिंदी और अंग्रेजी टाइपिंग स्पीड व एक्यूरेसी सुधारने हेतु योजनाबद्ध अभ्यास।'
+      },
+      {
+        title: 'उच्च शिक्षा डिग्री परामर्श',
+        desc: 'BA, BSc, BCom, MA, और MCom जैसे डिग्री पाठ्यक्रमों के लिए सही व प्रामाणिक मार्गदर्शन।'
+      },
+      {
+        title: 'सीधा और पारदर्शी संपर्क',
+        desc: 'संस्थान के निदेशक संदीप नागर से सीधा संवाद, कोई बिचौलिया या भ्रामक दावे नहीं।'
+      }
+    ],
+    faqT: 'अक्सर पूछे जाने वाले प्रश्न',
+    faqSub: 'पाठ्यक्रम, प्रवेश और संस्थान संबंधी सामान्य प्रश्नों के स्पष्ट और ईमानदार उत्तर।',
+    faqs: [
+      {
+        q: 'अभि कंप्यूटर सेंटर में कौन-कौन से कोर्स उपलब्ध हैं?',
+        a: 'हमारे यहाँ कंप्यूटर पाठ्यक्रमों में DCA, PGDCA, CPCT टाइपिंग व कंप्यूटर तैयारी, और Adobe Photoshop शामिल हैं। साथ ही BA, BSc, BCom, MA और MCom डिग्री पाठ्यक्रमों के लिए शैक्षणिक मार्गदर्शन दिया जाता है।'
+      },
+      {
+        q: 'कोर्स फीस, योग्यता और बैच समय की जानकारी कैसे मिलेगी?',
+        a: 'प्रत्येक पाठ्यक्रम की फीस, पात्रता और बैच का समय अलग होता है। नवीनतम और सटीक जानकारी के लिए कृपया हमारे केंद्र पर पधारें या +91 7000636271 पर कॉल/WhatsApp करें।'
+      },
+      {
+        q: 'अभि कंप्यूटर सेंटर पचोर में कहाँ स्थित है?',
+        a: 'हमारा संस्थान रेलवे क्रॉसिंग के पास, न्यू कॉलोनी, पचोर, मध्य प्रदेश 465683 में स्थित है। आप इस पेज पर दिए गए ‘गूगल मैप्स’ बटन पर क्लिक करके सीधे लोकेशन देख सकते हैं।'
+      },
+      {
+        q: 'क्या संस्थान में CPCT परीक्षा की तैयारी कराई जाती है?',
+        a: 'हाँ, हम CPCT परीक्षा के लिए हिंदी व अंग्रेजी टाइपिंग अभ्यास और कंप्यूटर थ्योरी का मार्गदर्शन प्रदान करते हैं। कृपया ध्यान दें कि किसी भी परीक्षा परिणाम की गारंटी नहीं दी जाती।'
+      },
+      {
+        q: 'प्रवेश या पूछताछ के लिए कैसे संपर्क करें?',
+        a: 'आप इसी वेबसाइट पर WhatsApp पूछताछ फॉर्म भर सकते हैं, +91 7000636271 पर निदेशक संदीप नागर से बात कर सकते हैं, या सीधे हमारे सेंटर पर आ सकते हैं।'
+      },
+      {
+        q: 'संस्थान के खुलने का समय क्या है?',
+        a: 'संस्थान सप्ताह भर दिन के समय खुला रहता है। अपनी सुविधानुसार समय जानने या मिलने के लिए पहले फ़ोन या WhatsApp कर सकते हैं।'
+      }
+    ],
+    fT: 'प्रवेश एवं कोर्स संबंधी पूछताछ',
+    fP: 'अपना इच्छित कोर्स चुनें और सीधे हमारे आधिकारिक WhatsApp पर संदेश भेजें। हम आपको पूरी जानकारी उपलब्ध कराएंगे।',
+    name: 'पूरा नाम',
+    namePlaceholder: 'अपना पूरा नाम लिखें',
+    mob: 'मोबाइल नंबर',
+    mobPlaceholder: '10 अंकों का मोबाइल नंबर (उदा. 9876543210)',
+    course: 'इच्छित कोर्स',
+    pick: 'कोर्स चुनें...',
+    msg: 'संदेश / प्रश्न (वैकल्पिक)',
+    msgPlaceholder: 'कोई विशेष प्रश्न या समय संबंधी रुचि यहाँ लिखें...',
+    consent: 'मैं अपनी पूछताछ के सिलसिले में अभि कंप्यूटर सेंटर द्वारा संपर्क किए जाने से सहमत हूँ।',
+    send: 'WhatsApp पर पूछताछ भेजें',
+    eName: 'कृपया अपना पूरा नाम लिखें।',
+    eMob: 'कृपया 10 अंकों का मान्य भारतीय मोबाइल नंबर लिखें।',
+    eCourse: 'कृपया कोई कोर्स चुनें।',
+    eConsent: 'आगे बढ़ने के लिए सहमति बॉक्स पर टिक करें।',
+    ok: 'WhatsApp आपके संदेश के साथ खुलना चाहिए। हम तक पहुँचने के लिए वहाँ Send दबाएँ। इस वेबसाइट पर कोई भी व्यक्तिगत जानकारी सहेजी नहीं जाती।',
+    fb: 'पॉपअप ब्लॉक हुआ? WhatsApp खोलने के लिए यहाँ क्लिक करें',
+    msgHead: 'Hello Abhi Computer Center, I would like to enquire about admission.',
+    msgTail: 'Please share the current course details, batch timings, and admission process.',
+    cT2: 'हमसे संपर्क करें',
+    cSub: 'पचोर स्थित हमारे सेंटर पर आएँ या फ़ोन, WhatsApp अथवा ईमेल से जुड़ें।',
+    call: 'कॉल करें',
+    email: 'ईमेल भेजें',
+    wa: 'WhatsApp चैट',
+    map: 'गूगल मैप्स पर देखें',
+    addr: 'रेलवे क्रॉसिंग के पास, न्यू कॉलोनी, पचोर, मध्य प्रदेश 465683',
+    fd: '2016 से पचोर में विद्यार्थियों को समर्पित कंप्यूटर शिक्षा एवं डिग्री मार्गदर्शन।',
+    quickLinks: 'त्वरित लिंक',
+    courseLinks: 'हमारे पाठ्यक्रम',
+    contactInfo: 'संपर्क विवरण',
+    copyright: 'सर्वाधिकार सुरक्षित। शिक्षा एवं मार्गदर्शन केंद्र।',
+    menu: 'मेन्यू खोलें',
+    closeMenu: 'मेन्यू बंद करें'
+  }
+};
